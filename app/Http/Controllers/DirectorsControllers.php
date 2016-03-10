@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Directors;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 
 /**
  * Class MoviesControllers
@@ -47,7 +50,8 @@ class DirectorsControllers extends Controller
      * Methode de controller
      * <=> Action de controller
      */
-    public function editer($id){
+    public function editer($id)
+    {
         //var_dump($variable)<=>dump()
         //dump() fct de debogage des variables
         // Deboger mon id
@@ -56,9 +60,27 @@ class DirectorsControllers extends Controller
 
         //retourner une vue
 
-        return view('directors/editer',[
-            'id' =>$id,
-            'prenom' =>$prenom,
-            ]);
+        return view('directors/editer', [
+            'id' => $id,
+            'prenom' => $prenom,
+        ]);
     }
+        public function enregistrer(Request $request)
+        {
+            //1ere étape: recuperation des données soumises
+            $firstname = $request->firstname; // title est le name de mon champs
+            //                       $request->title<=>$_POST['title']
+            $lastname = $request->lastname; //$_POST['description']
+            //2eme étape:creation en base de donnée du nouveau film
+            $directors = new Directors();
+            $directors->firstname = $firstname;
+            $directors->lastname = $lastname;
+            $directors->save();
+            //save() permet de sauvegarder mon objet en base de données
+// 3eme étape: redirection...
+            //redirection a partir de ma route
+            return Redirect::route('directors_lister');
+
+        }
+
 }

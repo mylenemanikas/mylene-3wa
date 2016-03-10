@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Actors;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 
 /**
  * Class MoviesControllers
@@ -51,5 +54,22 @@ class ActorsControllers extends Controller
     public function editer($id){
         //retourner une vue
         return view('actors/editer');
+    }
+    public function enregistrer(Request $request)
+    {
+        //1ere étape: recuperation des données soumises
+        $firstname = $request->firstname; // title est le name de mon champs
+        //                       $request->title<=>$_POST['title']
+        $lastname = $request->lastname; //$_POST['description']
+        //2eme étape:creation en base de donnée du nouveau film
+        $actors = new Actors();
+        $actors->firstname = $firstname;
+        $actors->lastname = $lastname;
+        $actors->save();
+        //save() permet de sauvegarder mon objet en base de données
+// 3eme étape: redirection...
+        //redirection a partir de ma route
+        return Redirect::route('actors_lister');
+
     }
 }

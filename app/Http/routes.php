@@ -10,14 +10,18 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+/*'/' est l'url*/
+Route::group(['middleware' => ['web']], function () {
+    //
+Route::get('/',['as'=>'static_welcome', function(){
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    return view('static/welcome');/*vue*/
+}]);
 /*
  * Page Contact
  * /contact=>bout de l'URI
  */
+/*'/contact'est l'url*/
 Route::get('/contact', function(){
 //Retourne la vue contact
 return view('static/contact');
@@ -44,11 +48,6 @@ Route::get('/apropos', function(){
 });
 
 
-
-
-
-
-
 /*
  * uses:Permettant d'appeler un Controller
  * Nom du controler@Action du Controller
@@ -58,6 +57,7 @@ Route::group(['prefix'=>'movies'], function() {
 
 
     Route::get('/lister/', [
+        'as'=>'movies_lister',
         'uses' => 'MoviesControllers@lister'
     ]);
     /*
@@ -75,12 +75,36 @@ Route::group(['prefix'=>'movies'], function() {
      * Nom du controler@Action du Controller
      * /voir=> bout de l'URI
      */
-    Route::get('/creer/{id}', [
+    Route::get('/creer/', [
+        'as'=>'movies_creer',
         'uses' => 'MoviesControllers@creer'
     ]);
     Route::get('/editer/{id}', [
+        'as'=>'movies_editer',
         'uses' => 'MoviesControllers@editer'
     ]);
+    // route en post
+    Route::post('/enregistrer/',[
+        'as'=>'movies_enregistrer',
+        'uses'=>'MoviesControllers@enregistrer'
+    ]);
+    Route::get('/visible/{id}',[
+        'as'=>'movies_visible',
+        'uses'=>'MoviesControllers@visible'
+    ]);
+    Route::get('/invisible/{id}',[
+        'as'=>'movies_invisible',
+        'uses'=>'MoviesControllers@invisible'
+    ]);
+    Route::get('/cover/{id}',[
+        'as'=>'movies_cover',
+        'uses'=>'MoviesControllers@cover'
+    ]);
+    Route::get('/uncover/{id}',[
+        'as'=>'movies_uncover',
+        'uses'=>'MoviesControllers@uncover'
+    ]);
+
 
 });
 
@@ -93,10 +117,12 @@ Route::group(['prefix'=>'categories'], function() {
      * /voir=> bout de l'URI
      */
     Route::get('/voir/{id}',[
+        'as'=>'categories_voir',
         'uses'=>'CategoriesControllers@voir'
     ]);
     Route::get('/lister/', [
-        'as'=>'movies_lister',
+        'as'=>'categories_lister',
+
         'uses' => 'CategoriesControllers@lister'
     ]);
     /*
@@ -104,11 +130,23 @@ Route::group(['prefix'=>'categories'], function() {
      * Nom du controler@Action du Controller
      * /voir=> bout de l'URI
      */
-    Route::get('/creer/{id}',[
+    Route::get('/creer',[
+        'as'=>'categories_creer',
         'uses'=>'CategoriesControllers@creer'
     ]);
     Route::get('/editer/',[
         'uses'=>'CategoriesControllers@editer'
+    ]);
+    // route en post
+    Route::post('/enregistrer',[
+        'as'=>'categories_enregistrer',
+        'uses'=>'CategoriesControllers@enregistrer'
+
+    ]);
+    Route::get('/supprimer/{id}',[
+        'as'=>'category_supprimer',
+        'uses'=>'CategoriesControllers@supprimer'
+
     ]);
 
 });
@@ -120,9 +158,11 @@ Route::group(['prefix'=>'actors'], function() {
      * /voir=> bout de l'URI
      */
     Route::get('/voir/{id}',[
+        'as'=>'actors_voir',
         'uses'=>'ActorsControllers@voir'
     ]);
     Route::get('/lister/', [
+        'as'=>'actors_lister',
         'uses' => 'ActorsControllers@lister'
     ]);
     /*
@@ -130,11 +170,18 @@ Route::group(['prefix'=>'actors'], function() {
      * Nom du controler@Action du Controller
      * /voir=> bout de l'URI
      */
-    Route::get('/creer/{id}',[
+    Route::get('/creer/',[
+        'as'=>'actors_creer',
         'uses'=>'ActorsControllers@creer'
     ]);
     Route::get('/editer/{id}',[
         'uses'=>'ActorsControllers@editer'
+    ]);
+    // route en post
+    Route::post('/enregistrer',[
+        'as'=>'actors_enregistrer',
+        'uses'=>'ActorsControllers@enregistrer'
+
     ]);
 });
 
@@ -149,13 +196,15 @@ Route::group(['prefix'=>'directors'], function() {
      */
 
     //where permet de mettre une restriction au nivo de mon argument en URL
-    Route::get('/voir/{id}',[
+    Route::get('/voir/',[
+        'as'=>'directors_voir',
         'uses'=>'DirectorsControllers@voir'
-    ])
-    ->where('id','[0-9]+');
+
+    ]);
+   /* ->where('id','[0-9]+');*/
 
     Route::get('/lister/', [
-
+        'as'=>'directors_lister',
         'uses' => 'DirectorsControllers@lister'
     ]);
     /*
@@ -163,12 +212,21 @@ Route::group(['prefix'=>'directors'], function() {
      * Nom du controler@Action du Controller
      * /voir=> bout de l'URI
      */
-    Route::get('/creer/{id}',[
+    Route::get('/creer/',[
+        'as'=>'directors_creer',
         'uses'=>'DirectorsControllers@creer'
     ]);
     Route::get('/editer/{id}',[
         'uses'=>'DirectorsControllers@editer'
     ]);
+    // route en post
+    Route::post('/enregistrer',[
+        'as'=>'directors_enregistrer',
+        'uses'=>'DirectorsControllers@enregistrer'
+    ]);
+
+
+});
 });
 
 /*
@@ -182,6 +240,4 @@ Route::group(['prefix'=>'directors'], function() {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
+
