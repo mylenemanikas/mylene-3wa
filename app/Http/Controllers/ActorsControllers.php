@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Actors;
+use App\Http\Requests\ActorsRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -55,7 +56,7 @@ class ActorsControllers extends Controller
         //retourner une vue
         return view('actors/editer');
     }
-    public function enregistrer(Request $request)
+    public function enregistrer(ActorsRequests $request)
     {
         //1ere étape: recuperation des données soumises
         $firstname = $request->firstname; // title est le name de mon champs

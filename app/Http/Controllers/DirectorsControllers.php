@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Directors;
+use App\Http\Requests\DirectorsRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -65,7 +66,7 @@ class DirectorsControllers extends Controller
             'prenom' => $prenom,
         ]);
     }
-        public function enregistrer(Request $request)
+        public function enregistrer(DirectorsRequests $request)
         {
             //1ere étape: recuperation des données soumises
             $firstname = $request->firstname; // title est le name de mon champs

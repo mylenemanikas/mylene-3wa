@@ -2,19 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: wal20
- * Date: 10/03/16
- * Time: 16:51
+ * Date: 11/03/16
+ * Time: 09:26
  */
 
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class CategoriesRequests
- * @package App\Http\Requests
- */
-class CategoriesRequests extends FormRequest
+class MoviesRequests extends FormRequest
 {
     /**
      * @return array
@@ -25,13 +21,13 @@ class CategoriesRequests extends FormRequest
         return [
             'title' => 'required|min:10',
             'description' =>'required|min:10|max:250',
-            ];
+        ];
     }
 
-/**
- * Personnalise chaque message d'erreur
- *
- */
+    /**
+     * Personnalise chaque message d'erreur
+     *
+     */
     public function messages()
     {
         return[
@@ -46,5 +42,4 @@ class CategoriesRequests extends FormRequest
     public function authorize(){
         return true;
     }
-
 }

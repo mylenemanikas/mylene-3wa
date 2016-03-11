@@ -3,6 +3,15 @@
     </head>
     <body>
         <h1>creer des réalisateurs</h1>
+        @if(count($errors->all()))
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form method="post" action="{{route('directors_enregistrer')}}">
             <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
             <label for="firstname">Firstname:</label>

@@ -3,6 +3,15 @@
     </head>
     <body>
         <h1>creer les films</h1>
+        @if(count($errors->all()))
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form method="post" action="{{route('movies_enregistrer')}}">
             <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
             <label for="title">Title:</label>
