@@ -1,7 +1,4 @@
-<html>
-    <head>
-    </head>
-    <body>
+@extends('layout')
+@section('content')
         <h1>editer des acteurs</h1>
-    </body>
-</html>
+    @endsection

@@ -1,7 +1,5 @@
-<html>
-    <head>
-    </head>
-    <body>
+@extends('layout')
+@section('content')
         <h1>creer des réalisateurs</h1>
         @if(count($errors->all()))
             <div class="alert alert-danger">
@@ -20,5 +18,4 @@
             <textarea id="lastname" name="lastname"></textarea>
             <button type="submit">Créer un réalisateur</button>
         </form>
-    </body>
-</html>
+@endsection

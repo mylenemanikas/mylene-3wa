@@ -1,7 +1,5 @@
-<html>
-    <head>
-    </head>
-    <body>
+@extends('layout')
+@section('content')
         <h1>Liste des category</h1>
         <hr/>
         <p>
@@ -14,5 +12,4 @@
             <p>{{$categorie->description}}</p>
             <p><a href="{{route("category_supprimer",['id'=>$categorie->id]) }}">Supprimer</a></p>
         @endforeach
-    </body>
-</html>
+@endsection

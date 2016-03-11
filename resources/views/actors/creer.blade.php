@@ -1,7 +1,5 @@
-<html>
-    <head>
-    </head>
-    <body>
+@extends('layout')
+@section('content')
         <h1> creer des acteurs</h1>
         @if(count($errors->all()))
             <div class="alert alert-danger">
@@ -20,5 +18,4 @@
             <textarea id="lastname" name="lastname"></textarea>
             <button type="submit">Créer cet acteur</button>
         </form>
-    </body>
-</html>
+    @endsection

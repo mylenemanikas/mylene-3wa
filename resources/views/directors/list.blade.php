@@ -1,7 +1,5 @@
-<html>
-    <head>
-    </head>
-    <body>
+@extends('layout')
+@section('content')
         <h1>Liste de nos réalisateurs</h1>
         <hr/>
         <p>
@@ -13,5 +11,4 @@
             <h5>{{$director->firstname}}</h5>
             <p>{{$director->lastname}}</p>
         @endforeach
-    </body>
-</html>
+@endsection

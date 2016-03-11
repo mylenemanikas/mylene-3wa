@@ -1,18 +1,5 @@
-<html>
-    <head>
-        <style>
-            body{
-                font-size: 62.5%;
-            }
-            h1{
-                font-size: 2.5rem;
-                color:red;
-                text-align: center;
-            }
-
-        </style>
-    </head>
-    <body>
+@extends('layout')
+@section('content')
     <header>
         <h1>Liste de nos films</h1>
     </header>
@@ -63,5 +50,4 @@
 
             <p>{!!$movie->description!!}</p>
         @endforeach
-    </body>
-</html>
+  @endsection

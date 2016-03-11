@@ -1,7 +1,5 @@
-<html>
-    <head>
-    </head>
-    <body>
+@extends('layout')
+@section('content')
     <h1>Liste de mes films</h1>
     <h3>
         <a href="{{ route('movies_lister')}}">
@@ -12,5 +10,4 @@
     {{--HTML rendu--}}
     <p>{!! $movie->synopsis!!}</p>
 
-    </body>
-</html>
+@endsection

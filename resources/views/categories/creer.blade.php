@@ -1,7 +1,5 @@
-<html>
-    <head>
-    </head>
-    <body>
+@extends('layout')
+@section('content')
         <h1> créer des categories</h1>
         @if(count($errors->all()))
             <div class="alert alert-danger">
@@ -20,5 +18,4 @@
         <textarea id="description" name="description"></textarea>
         <button type="submit">Créer cette catégorie</button>
     </form>
-    </body>
-</html>
+@endsection

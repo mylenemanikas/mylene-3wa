@@ -69,10 +69,19 @@ class MoviesControllers extends Controller
         $title = $request->title; // title est le name de mon champs
         //                       $request->title<=>$_POST['title']
         $synopsis = $request->synopsis; //$_POST['description']
+        $languages = $request->languages;
+        $bo = $request->bo;
+        $annee = $request->annee;
+        $date_release = $request->date_release;
+
         //2eme étape:creation en base de donnée du nouveau film
         $movies = new Movies();
         $movies->title = $title; /* title=comme dans php myadmin*/
         $movies->synopsis = $synopsis;
+        $movies->languages = $languages;
+        $movies->bo = $bo;
+        $movies->annee = $annee;
+        $movies->date_release = $date_release;
         $movies->save();
         //save() permet de sauvegarder mon objet en base de données
 // 3eme étape: redirection...
