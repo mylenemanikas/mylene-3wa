@@ -20,7 +20,7 @@ class DirectorsControllers extends Controller
   */
     public function lister(){
         $directors=Directors::all();
-        dump($directors);
+
         //retourner une vue
         return view('directors/list',[
             "directors"=>$directors

@@ -8,6 +8,7 @@
 
 namespace App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class Movies
@@ -16,6 +17,41 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Movies extends Model
 {
-/** Nom de ma table */
-    protected $table='movies';
+    /** Nom de ma table */
+    protected $table = 'movies';
+
+    /**
+     * Récupéréer les films actifs
+     */
+    public function getNbMoviesActifs()
+    {
+      /**SELECT COUNT(*)as nb
+       * FROM movies
+       * WHERE visible=1
+       */
+        $nb=DB::table('movies')
+            ->where('visible',1)
+            ->count();
+        return $nb;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNbMovies(){
+        $nbtotal=DB::table('movies')
+            ->count();
+
+        return$nbtotal;
+    }
+    public function getbudget(){
+        $budget=DB::table('movies')
+
+            ->sum('budget');
+
+        return $budget;
+    }
+
+
+
 }

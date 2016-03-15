@@ -218,7 +218,7 @@
                                                     <span class="fa fa-tags"></span>
                                                 </div>
                                                 <div class="timeline-desc">
-                                                    <b>Michael</b> Added to his store:
+                                                    <b>Mylene</b> Added to his store:
                                                     <a href="#">Ipod</a>
                                                 </div>
                                                 <div class="timeline-date">1:25am</div>
@@ -278,7 +278,7 @@
                                                     <span class="fa fa-tags"></span>
                                                 </div>
                                                 <div class="timeline-desc">
-                                                    <b>Michael</b> Added his store:
+                                                    <b>Mylene</b> Added his store:
                                                     <a href="#">Ipod</a>
                                                 </div>
                                                 <div class="timeline-date">8:25am</div>
@@ -413,7 +413,7 @@
                                                     <div class="media-body">
                                                         <h5 class="media-heading">New Registration
                                                             <small class="text-muted"></small>
-                                                        </h5> Michael Sober - 7 hours ago
+                                                        </h5> Mylene Sober - 7 hours ago
                                                     </div>
                                                     <div class="media-right">
                                                         <div class="media-response"> Approve?</div>
@@ -463,7 +463,7 @@
                                                 <div class="media">
                                                     <div class="media-left">
                                                         <a href="#">
-                                                            <img class="media-object" alt="64x64" src="assets/img/avatars/3.jpg">
+                                                            <img class="media-object" alt="64x64" src="{{asset("img/donald.png")}}">
                                                         </a>
                                                     </div>
                                                     <div class="media-body">
@@ -482,14 +482,14 @@
                                                     </div>
                                                     <div class="media-right">
                                                         <a href="#">
-                                                            <img class="media-object" alt="64x64" src="assets/img/avatars/1.jpg">
+                                                            <img class="media-object" alt="64x64" src="{{asset("img/donald.png")}}">
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="media">
                                                     <div class="media-left">
                                                         <a href="#">
-                                                            <img class="media-object" alt="64x64" src="assets/img/avatars/2.jpg">
+                                                            <img class="media-object" alt="64x64" src="{{asset("img/donald.png")}}">
                                                         </a>
                                                     </div>
                                                     <div class="media-body">
@@ -508,14 +508,14 @@
                                                     </div>
                                                     <div class="media-right">
                                                         <a href="#">
-                                                            <img class="media-object" alt="64x64" src="assets/img/avatars/1.jpg">
+                                                            <img class="media-object" alt="64x64" src="{{asset("img/donald.png")}}">
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="media">
                                                     <div class="media-left">
                                                         <a href="#">
-                                                            <img class="media-object" alt="64x64" src="assets/img/avatars/2.jpg">
+                                                            <img class="media-object" alt="64x64" src="{{asset("img/donald.png")}}">
                                                         </a>
                                                     </div>
                                                     <div class="media-body">
@@ -534,7 +534,7 @@
                                                     </div>
                                                     <div class="media-right">
                                                         <a href="#">
-                                                            <img class="media-object" alt="64x64" src="assets/img/avatars/1.jpg">
+                                                            <img class="media-object" alt="64x64"src="{{asset("img/donald.png")}}">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -542,7 +542,7 @@
                                             <div id="nav-tab3" class="tab-pane scroller-nm" role="tabpanel">
                                                 <ul class="media-list" role="menu">
                                                     <li class="media">
-                                                        <a class="media-left" href="#"> <img src="assets/img/avatars/5.jpg" class="mw40" alt="avatar"> </a>
+                                                        <a class="media-left" href="#"> <img src="{{asset("img/donald.png")}}" class="mw40" alt="avatar"> </a>
                                                         <div class="media-body">
                                                             <h5 class="media-heading">Article
                                                                 <small class="text-muted">- 08/16/22</small>
@@ -551,7 +551,7 @@
                                                         </div>
                                                     </li>
                                                     <li class="media">
-                                                        <a class="media-left" href="#"> <img src="assets/img/avatars/2.jpg" class="mw40" alt="avatar"> </a>
+                                                        <a class="media-left" href="#"> <img src="{{asset("img/donald.png")}}" class="mw40" alt="avatar"> </a>
                                                         <div class="media-body">
                                                             <h5 class="media-heading mv5">Article
                                                                 <small> - 08/16/22</small>
@@ -561,7 +561,7 @@
                                                         </div>
                                                     </li>
                                                     <li class="media">
-                                                        <a class="media-left" href="#"> <img src="assets/img/avatars/3.jpg" class="mw40" alt="avatar"> </a>
+                                                        <a class="media-left" href="#"> <img src="{{asset("img/donald.png")}}" class="mw40" alt="avatar"> </a>
                                                         <div class="media-body">
                                                             <h5 class="media-heading">Article
                                                                 <small class="text-muted">- 08/16/22</small>
@@ -570,7 +570,7 @@
                                                         </div>
                                                     </li>
                                                     <li class="media">
-                                                        <a class="media-left" href="#"> <img src="assets/img/avatars/4.jpg" class="mw40" alt="avatar"> </a>
+                                                        <a class="media-left" href="#"> <img src="{{asset("img/donald.png")}}" class="mw40" alt="avatar"> </a>
                                                         <div class="media-body">
                                                             <h5 class="media-heading mv5">Article
                                                                 <small class="text-muted">- 08/16/22</small>
@@ -579,7 +579,7 @@
                                                         </div>
                                                     </li>
                                                     <li class="media">
-                                                        <a class="media-left" href="#"> <img src="assets/img/avatars/5.jpg" class="mw40" alt="avatar"> </a>
+                                                        <a class="media-left" href="#"> <img src="{{asset("img/donald.png")}}" class="mw40" alt="avatar"> </a>
                                                         <div class="media-body">
                                                             <h5 class="media-heading">Article
                                                                 <small class="text-muted">- 08/16/22</small>
@@ -588,7 +588,7 @@
                                                         </div>
                                                     </li>
                                                     <li class="media">
-                                                        <a class="media-left" href="#"> <img src="assets/img/avatars/2.jpg" class="mw40" alt="avatar"> </a>
+                                                        <a class="media-left" href="#"> <img src="{{asset("img/donald.png")}}" class="mw40" alt="avatar"> </a>
                                                         <div class="media-body">
                                                             <h5 class="media-heading mv5">Article
                                                                 <small> - 08/16/22</small>
@@ -598,7 +598,7 @@
                                                         </div>
                                                     </li>
                                                     <li class="media">
-                                                        <a class="media-left" href="#"> <img src="assets/img/avatars/3.jpg" class="mw40" alt="avatar"> </a>
+                                                        <a class="media-left" href="#"> <img src="{{asset("img/donald.png")}}" class="mw40" alt="avatar"> </a>
                                                         <div class="media-body">
                                                             <h5 class="media-heading">Article
                                                                 <small class="text-muted">- 08/16/22</small>
@@ -710,8 +710,8 @@
                     </li>
                     <li class="dropdown menu-merge">
                         <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
-                            <img src="assets/img/avatars/1.jpg" alt="avatar" class="mw30 br64">
-                            <span class="hidden-xs pl15"> Michael .R </span>
+                            <img src="{{asset("img/donald.png")}}" alt="avatar" class="mw30 br64">
+                            <span class="hidden-xs pl15"> Mylene M. </span>
                             <span class="caret caret-tp hidden-xs"></span>
                         </a>
                         <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
@@ -779,7 +779,7 @@
                         <div class="sidebar-widget author-widget">
                             <div class="media">
                                 <a class="media-left" href="#">
-                                    <img src="assets/img/avatars/3.jpg" class="img-responsive">
+                                    <img src="{{asset("img/donald.png")}}" class="img-responsive">
                                 </a>
                                 <div class="media-body">
                                     <div class="media-links">
@@ -847,7 +847,7 @@
                                 <span class="fa fa-calendar"></span>
                                 <span class="sidebar-title">Dashboard</span>
               <span class="sidebar-title-tray">
-                <span class="label label-xs bg-primary">New</span>
+                <span class="label label-xs bg-primary"></span>
               </span>
                             </a>
                         </li>

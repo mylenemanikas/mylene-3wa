@@ -1,55 +1,91 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    <style>
+@extends('layout')
+@section('content')
+    <h3><i class="fa fa-dashboard"></i></i>Dashboard</h3></h3>
+    <hr/>
 
-        html{
-
-            width: 100%;
-            font-size:62.5%
-
-        }
-        .container{
-            text-align: center;
-        }
-        .container a{
-            color: pink;
-            text-decoration: none;
-            font-size: 8rem;
-            font-family: "Lato";
-        }
-        .menu{
-            text-align: center;
-        }
-        .menu a {
-          text-decoration: none;
-
-            font-size: 4rem;
-            color:skyblue;
-        }
-        .menu ul{
-            list-style-type: none;
-        }
-    </style>
-    <title>ALLOMOVIES</title>
-</head>
-<body>
-<div class="container">
-<a href="#"><strong>ALLOMOVIES</strong></a>
-</div>
-<div class="menu">
-<ul>
-    <li><a href="{{ route('static_welcome')}}">Accueil</a></li>
-    <li><a href="{{ route('movies_lister')}}">Films</a></li>
-    <li><a href="{{ route('categories_lister')}}">Categories</a></li>
-    <li><a href="{{ route('actors_lister')}}">Acteurs</a></li>
-    <li><a href="{{ route('directors_lister')}}">Réalisateurs</a></li>
-</ul>
+<div class="col-md-3">
+    <div class="panel panel-tile text-center">
+        <div class="panel-body bg-success light">
+            <i class="fa fa-film text-muted fs70 mt10"></i>
+            <h1 class="fs35 mbn">{{$nb}} / {{ $nbtotal }}</h1>
+            <h6 class="text-white">Films actifs</h6>
+        </div>
+    </div>
 </div>
 
+    <div class="col-md-3">
+        <div class="panel panel-tile text-center">
+            <div class="panel-body bg-primary light">
+                <i class="fa fa-comments text-muted fs70 mt10"></i>
+                <h1 class="fs35 mbn">{{ $nbtotalc }}</h1>
+                <h6 class="text-white">CATEGORIES</h6>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel panel-tile text-center">
+            <div class="panel-body bg-success light">
+                <i class="fa fa-eye text-muted fs70 mt10"></i>
+                <h1 class="fs35 mbn">{{$nbtotala}}</h1>
+                <h6 class="text-white">ACTORS</h6>
+            </div>
+
+        </div>
 
 
-</body>
+    </div>
 
-</html>
+    <div class="col-md-3">
+        <div class="panel panel-tile text-center">
+            <div class="panel-body bg-primary light">
+                <i class="fa fa-group text-muted fs70 mt10"></i>
+                <h1 class="fs35 mbn">{{$nbtotald}}</h1>
+                <h6 class="text-white">DIRECTORS</h6>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="panel panel-tile text-center">
+        <div class="panel-body bg-primary light">
+            <i class="fa fa-twitter text-muted fs45 br64 bg-primary p15 ph20 mt10"></i>
+            <h1 class="fs35 mbn">{{$budget}}</h1>
+            <h6 class="text-white">SOMME DES BUDGETS DES FILMS</h6>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="col-md-3">
+    <div class="panel panel-tile text-center">
+        <div class="panel-body bg-success light">
+            <i class="fa fa-twitter text-muted fs45 br64 bg-success p15 ph20 mt10"></i>
+            <h1 class="fs35 mbn">{{$moyenneage}}</h1>
+            <h6 class="text-white">NB CONVERSIONS</h6>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@endsection

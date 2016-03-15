@@ -35,18 +35,16 @@
         </div>
     </header>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-8">
+        <div class="col-xs-12 col-sm-6 col-md-6 titrepage">
             <h1 class="fa fa-plus">Liste de nos films</h1>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-2">
-            <p>
-                <a href="{{ route('movies_creer')}}" class="fa fa-plus">
-                    Creer un film
+        <div class="col-xs-12 col-sm-6 col-md-3 creerunfilm">
+                <a href="{{ route('movies_creer')}}">
+                    <button type="button" class="btn btn-rounded btn-info btn-block fa fa-plus">Creer un film</button>
                 </a>
-            </p>
         </div>
 
-        <div class="col-xs-6 col-md-2">
+        <div class="col-xs-6 col-md-3 search">
             <input type="text" id="icon-filter" class="form-control" placeholder="Enter search terms..">
         </div>
     </div>
@@ -62,6 +60,9 @@
             <th>Visible</th>
             <th>Cover</th>
             <th>Description</th>
+            <th>Note</th>
+            <th>Supprimer</th>
+
 
         </tr>
         </thead>
@@ -130,6 +131,12 @@
             </td>
             <td>
                 {!!str_limit(strip_tags($movie->description),$limit="250",$end="...")!!}
+            </td>
+            <td>
+                {!!str_repeat("<i class='glyphicon glyphicon-star'></i>", $movie->note_presse)!!}
+            </td>
+            <td>
+                <a href="{{route("movies_supprimer",['id'=>$movie->id]) }}">Supprimer</a>
             </td>
 
         </tr>

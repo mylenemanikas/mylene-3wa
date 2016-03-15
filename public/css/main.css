@@ -1,4 +1,33 @@
-.form-control{
-    padding-top:20px;
 
+.titrepage{
+    font-size: 200%
+}
+.radio-custom.radio-disabled.mb10 p{
+    font-weight:bold;
+}
+.container{
+    text-align: center;
+}
+.formulaire{
+    margin-left: 5%;
+}
+button {
+    margin-left: 5%;
+    margin-top: 0.2%;
+}
+.title{
+    font-weight: bold;
+}
+.creerunfilm{
+    margin-top: 0.7%;
+}
+.search{
+    margin-top: 0.7%;
+
+}
+.btn.btn-rounded.btn-info.btn-block.fa.fa-plus{
+
+}
+.btn-block{
+    width:50%;
 }

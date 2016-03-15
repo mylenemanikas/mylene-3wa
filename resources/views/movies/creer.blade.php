@@ -1,6 +1,11 @@
 @extends('layout')
 @section('content')
-        <h1>creer les films</h1>
+    <div class="container">
+    <div class="col-xs-12 col-sm-6 col-md-12 titrepage">
+        <h1 class="fa fa-plus">Créer un film</h1>
+    </div>
+    </div>
+    <div class="formulaire">
         @if(count($errors->all()))
             <div class="alert alert-danger">
                 <ul>
@@ -12,18 +17,18 @@
         @endif
         <form method="post" action="{{route('movies_enregistrer')}}">
             <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
-            <p>
-            <label for="title">Title:</label>
-            <input value="{{old('title')}}" name="title" id="title"/>
+
+
+<p>
+                <label for="title">Title:</label>
+            <input name="title" id="title" value="{{old('title')}}" class="gui-input" type="text">
                 {{$errors->first('title')}}
-            </p>
+</p>
              <!--// permets de mettre l'erreur a coté de la case title-->
 
             <label  for="synopsis">Synopsis:</label>
+
             <input  id="synopsis" name="synopsis"/>
-
-
-
 
             <div class="radio-custom radio-disabled mb10">
                 <p>Langue:</p>
@@ -47,12 +52,17 @@
 
 
             <label  for="annee">Annee:</label>
+
             <input  id="annee" name="annee"/>
+            <p>
+            </p>
 <p>
             <label  for="date_release">date_release:</label>
+
             <input  id="date_release" name="date_release"/>
 </p>
 
             <button type="submit">Créer un film</button>
         </form>
+
 @endsection

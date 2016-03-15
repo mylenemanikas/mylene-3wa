@@ -8,7 +8,7 @@
 
 namespace App;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\DB;
 
 class Categories extends Model
 {
@@ -16,4 +16,9 @@ class Categories extends Model
     /** Nom de ma table */
     protected $table='categories';
 
+    public function getNbCategories(){
+        $nbtotalc=DB::table('categories')
+            ->count();
+        return $nbtotalc;
+    }
 }

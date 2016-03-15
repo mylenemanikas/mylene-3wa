@@ -13,10 +13,12 @@
 /*'/' est l'url*/
 Route::group(['middleware' => ['web']], function () {
     //
-Route::get('/',['as'=>'static_welcome', function(){
 
-    return view('static/welcome');/*vue*/
-}]);
+Route::get('/',[
+    'as'=>'homepage',
+    'uses'=>"HomeController@homepage"
+]);
+
 /*
  * Page Contact
  * /contact=>bout de l'URI
@@ -104,6 +106,11 @@ Route::group(['prefix'=>'movies'], function() {
         'as'=>'movies_uncover',
         'uses'=>'MoviesControllers@uncover'
     ]);
+    Route::get('/supprimer/{id}',[
+        'as'=>'movies_supprimer',
+        'uses'=>'MoviesControllers@supprimer'
+
+    ]);
 
 
 });
@@ -181,12 +188,13 @@ Route::group(['prefix'=>'actors'], function() {
     Route::post('/enregistrer',[
         'as'=>'actors_enregistrer',
         'uses'=>'ActorsControllers@enregistrer'
-
     ]);
     Route::get('/supprimer/{id}',[
         'as'=>'actors_supprimer',
         'uses'=>'ActorsControllers@supprimer'
+
     ]);
+
 });
 
 

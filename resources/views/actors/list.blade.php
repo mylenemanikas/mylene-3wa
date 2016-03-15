@@ -54,8 +54,11 @@
     <table class="table table-hover">
         <thead>
         <tr class="info">
+            <th>Id</th>
+            <th>Image</th>
             <th>Prenom</th>
             <th>Nom</th>
+            <th>Biography</th>
             <th>Supprimer</th>
         </tr>
         </thead>
@@ -63,10 +66,20 @@
         @foreach($actors as $actor)
             <tr>
                 <td>
+                    {!!$actor->id!!}
+                </td>
+
+                <td>
+                    <img style="width:40%;" src="{{ $actor->image }}"/>
+                </td>
+                <td>
                     {{$actor->firstname}}
                 </td>
                 <td>
                     {{$actor->lastname}}
+                </td>
+                <td>
+                    {!!str_limit(strip_tags($actor->biography),$limit="250",$end="...")!!}
                 </td>
                 <td>
                     <a href="{{route("actors_supprimer",['id'=>$actor->id]) }}">Supprimer</a>
