@@ -2,25 +2,48 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
-class User extends Authenticatable
+class User extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $table = 'user';
 
     /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
+     * Récupéréer les films actifs
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function getNbUserActifs()
+    {
+
+        $nbU=DB::table('user')
+            ->where('enabled',1)
+            ->count();
+        return $nbU;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNbUser(){
+        $nbtotalU=DB::table('user')
+            ->count();
+
+        return$nbtotalU;
+    }
+    public function getlastuser(){
+        $lastuser=DB::table('user')
+            ->select('avatar','created_at', 'username','ville')
+            ->where('enabled',1)
+            ->orderBy('avatar')
+            ->limit(12)
+            ->get();
+         //dump($lastuser);
+        return $lastuser;
+    }
+
+
+
+
+
+
 }

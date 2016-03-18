@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\MoviesRequests;
 use App\Movies;
 use Illuminate\Http\Request;
@@ -13,55 +14,76 @@ use Illuminate\Support\Facades\Redirect;
  */
 class MoviesControllers extends Controller
 {
- /**
-  * Methode de controller
-  * <=> Action de controller
-  */
-    public function lister(){
+    /**
+     * Methode de controller
+     * <=> Action de controller
+     */
+    public function lister(Request $request)
+    {
         /*$movie=Movies::find($id);
         return view ('movies/lister',[
             'movie'=>$movie*/
 
-        $movies=Movies::all();
+        $movies = Movies::all();
+// $request->() accéder à la session
+        // get fonction pour récupérer des donnée à partir de la clef
+        $id_movies = $request->session()->get('id_movies');
+        //dump($id_movies);
+
 
         //retourner une vue
-        return view('movies/list',[
-        "movies"=>$movies
-        ]);
-}
-    /**
-     * Methode de controller
-     * <=> Action de controller
-     */
-
-    public function voir($id){
-        /*find permet de retrouver un objet par son id*/
-        $movie=Movies::find($id);
-
-        //retourner une vue
-        return view('movies/voir',[
-            "movie"=>$movie
+        return view('movies/list', [
+            "movies" => $movies
         ]);
     }
+
     /**
      * Methode de controller
      * <=> Action de controller
      */
-    public function creer(){
+
+    public function voir(Request $request, $id)
+    {
+
+        $id_movies = $request->session()->get('id_movies');
+        //dump($id_movies);
+
+
+        /*find permet de retrouver un objet par son id*/
+        $movie = Movies::find($id);
+
+
+        //retourner une vue
+        return view('movies/voir', [
+            "movie" => $movie
+        ]);
+    }
+
+    /**
+     * Methode de controller
+     * <=> Action de controller
+     */
+    public function creer()
+    {
+
         //retourner une vue
         return view('movies/creer');
     }
+
     /**
      * Methode de controller
      * <=> Action de controller
      */
-    public function editer($id){
+    public function editer($id)
+    {
         /*$movies=Movies::find($id);*/
+
         dump($id);
-            return view("movies/editer",
-                ["id"=>$id
-    ]);
+        return view("movies/editer",
+            ["id" => $id
+            ]);
     }
+
     public function enregistrer(MoviesRequests $request)
     {
         // Créeation de validateur par champs
@@ -89,32 +111,83 @@ class MoviesControllers extends Controller
         return Redirect::route('movies_lister');
 
     }
-    public function visible($id){
 
-        $movies=Movies::find($id);
+    public function visible($id)
+    {
 
-        if($movies->visible==0) {
+        $movies = Movies::find($id);
+
+        if ($movies->visible == 0) {
             $movies->visible = 1;
-        }else{
-            $movies->visible=0;
+        } else {
+            $movies->visible = 0;
         }
         $movies->save();
 
         return Redirect::route('movies_lister');
     }
-    public function cover($id){
 
-        $movies=Movies::find($id);
+    public function cover($id)
+    {
 
-        if($movies->cover==0) {
+        $movies = Movies::find($id);
+
+        if ($movies->cover == 0) {
             $movies->cover = 1;
-        }else{
-            $movies->cover=0;
+        } else {
+            $movies->cover = 0;
         }
         $movies->save();
 
         return Redirect::route('movies_lister');
     }
 
+    // id va chercher les arguments de ma route
+    public function panier(Request $request, $id)
+    {
 
+        $movie = Movies::find($id);
+        // dd($movie);
+        // 1. enregistrer en session l'id
+        //Requete fait appel à la session
+        // put permet d'enregistrer en session a base d'une clef qui est id_movies et d'une valeure: $id
+
+        // get je recupère en session mon tableau par sa clef'id_movies' si mon tableau n'existe pas en session j'initialise un tableau vide
+        $tab = $request->session()->get('id_movies', []);
+
+        if (array_key_exists($id, $tab)) {
+            unset($tab[$id]);
+            // supprime mon élément du tableau
+        } else {
+            $tab[$id] = $movie->title;// ajouter un id dans un tableau
+        }
+
+
+        //  je viens enregistrer mon tableau
+        //Ajouté un id dans mon tableau de movies
+        $request->session()->put('id_movies', $tab);
+
+
+        //2. rediriger vers la liste des films
+        return Redirect:: route('movies_lister');
+
+
+    }
+
+    public function actualise(Request $request)
+    {
+
+        $request->session()->forget('id_movies');
+
+        return Redirect::route('movies_lister');
+    }
+
+        public function actualiserelement(Request $request, $id)
+    {
+        $tab = $request->session()->get('id_movies', []);
+        unset($tab[$id]);
+
+        $request->session()->put('id_movies', $tab);
+        return Redirect::route('movies_lister');
+    }
 }

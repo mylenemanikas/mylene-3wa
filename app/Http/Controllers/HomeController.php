@@ -5,6 +5,8 @@ use App\Movies;
 use App\Categories;
 use App\Actors;
 use App\Directors;
+use App\User;
+use App\Sessions;
 
 
 
@@ -24,6 +26,7 @@ class HomeController extends Controller
        $nb=$movie->getNbMoviesActifs();
        $nbtotal=$movie->getNbMovies();
        $budget= $movie->getbudget();
+       $nextseance=$movie->getnextseance();
 
        $categorie=new Categories();
 
@@ -36,7 +39,16 @@ class HomeController extends Controller
        $director=new Directors();
        $nbtotald=$director->getNbDirectors();
 
+       $user=new User();
+       $nbU=$user->getNbUserActifs();
+       $nbtotalU=$user->getNbUser();
+       $lastuser=$user->getlastuser();
 
+       $sessions=new Sessions();
+       $prochainesession=$sessions->getprochainesession();
+
+
+      // dump($prochainesession);
 
 
        return view('static/welcome',
@@ -47,7 +59,12 @@ class HomeController extends Controller
                'nbtotala'=>$nbtotala,
                'nbtotald'=>$nbtotald,
                'budget'=>$budget,
-               'moyenneage'=>$moyenneage
+               'moyenneage'=>$moyenneage,
+               'nbU'=>$nbU,
+               'nbtotalU'=>$nbtotalU,
+               'nextseance'=>$nextseance,
+               'prochainesession'=>$prochainesession,
+               'lastuser'=>$lastuser
        ]);
    }
 

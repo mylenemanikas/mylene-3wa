@@ -26,6 +26,8 @@ class Actors extends Model
         $moyenneage=DB::table('actors')
             ->AVG(DB::raw('TIMESTAMPDIFF(YEAR,dob,NOW() )'));
 
-        return$moyenneage;
+        return round($moyenneage,0);
+
     }
+
 }

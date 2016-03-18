@@ -4,7 +4,7 @@
         <div class="topbar-left">
             <ol class="breadcrumb">
                 <li class="crumb-active">
-                    <a href="dashboard.html">Categorie</a>
+                    <a href="dashboard.html">Commentaires</a>
                 </li>
                 <li class="crumb-icon">
                     <a href="dashboard.html">
@@ -14,7 +14,7 @@
                 <li class="crumb-link">
                     <a href="index.html">Home</a>
                 </li>
-                <li class="crumb-trail">Categories</li>
+                <li class="crumb-trail">Commentaire</li>
             </ol>
         </div>
         <div class="topbar-right">
@@ -36,13 +36,13 @@
     </header>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-8">
-            <h1 class="fa fa-plus">Liste de nos acteurs</h1>
+            <h1 class="fa fa-plus">Liste de nos commentaires</h1>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-2">
             <p>
-                <a href="{{ route('actors_creer')}}" class="fa fa-plus">
+                <a href="{{ route('commentaires_creer')}}" class="fa fa-plus">
 
-                    Creer un acteur
+                    Creer un commentaire
                 </a>
             </p>
         </div>

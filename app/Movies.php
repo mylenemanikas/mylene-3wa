@@ -51,6 +51,12 @@ class Movies extends Model
 
         return $budget;
     }
+    public function getnextseance(){
+        $nextseance=DB::table('movies')
+            ->where('date_release','>',DB::raw('NOW()'));
+        return count($nextseance);
+
+    }
 
 
 

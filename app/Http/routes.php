@@ -14,41 +14,37 @@
 Route::group(['middleware' => ['web']], function () {
     //
 
-Route::get('/',[
-    'as'=>'homepage',
-    'uses'=>"HomeController@homepage"
-]);
+    Route::get('/', [
+        'as' => 'static_welcome',
+        'uses' => "HomeController@homepage"
+    ]);
 
-/*
- * Page Contact
- * /contact=>bout de l'URI
- */
-/*'/contact'est l'url*/
-Route::get('/contact', function(){
-//Retourne la vue contact
-return view('static/contact');
+    /*
+     * Page Contact
+     * /contact=>bout de l'URI
+     */
+    /*'/contact'est l'url*/
+    Route::get('/contact', [
+        'as' => 'static_contact',
+        'uses' => "StaticControllers@static"
+    ]);
 
-});
-
-/*
- * Page Concept
- * /concept=> bout de l'URI
- */
-Route::get('/concept', function(){
-//Retourne la vue concept
-    return view('static/concept');
-
-});
-/*
- * Page A propos
- * /A propos=> bout de l'URI
- */
-Route::get('/apropos', function(){
-//Retourne la vue a propos
-    return view('static/apropos');
-
-});
-
+    /*
+     * Page Concept
+     * /concept=> bout de l'URI
+     */
+    Route::get('/concept', [
+        'as' => 'static_concept',
+        'uses' => "StaticControllers@static"
+    ]);
+    /*
+     * Page A propos
+     * /A propos=> bout de l'URI
+     */
+    Route::get('/apropos', [
+        'as' => 'static_apropos',
+        'uses' => "StaticControllers@static"
+    ]);
 
 /*
  * uses:Permettant d'appeler un Controller
@@ -112,9 +108,21 @@ Route::group(['prefix'=>'movies'], function() {
 
     ]);
 
+    // route panier
+    Route::get('/panier/{id}',[
+        'as'=>'movies_panier',
+        'uses'=>'MoviesControllers@panier'
+    ]);
+    Route::get('/actualise',[
+        'as'=>'movies_actualise',
+        'uses'=>'MoviesControllers@actualise'
+    ]);
+    Route::get('/actualiserelement/{id}',[
+        'as'=>'movies_actualiserelement',
+        'uses'=>'MoviesControllers@actualiserelement'
+    ]);
 
 });
-
 
 
 Route::group(['prefix'=>'categories'], function() {
@@ -194,6 +202,15 @@ Route::group(['prefix'=>'actors'], function() {
         'uses'=>'ActorsControllers@supprimer'
 
     ]);
+    // route panier
+    Route::get('/favoris/{id}',[
+        'as'=>'actors_favoris',
+        'uses'=>'ActorsControllers@favoris'
+    ]);
+    Route::get('/actualise',[
+        'as'=>'actors_actualise',
+        'uses'=>'ActorsControllers@actualise'
+    ]);
 
 });
 
@@ -243,8 +260,8 @@ Route::group(['prefix'=>'directors'], function() {
 
 
 });
-    Route::group(['prefix'=>'user'], function() {
 
+    Route::group(['prefix'=>'user'], function() {
 
         Route::get('/lister/', [
             'as'=>'user_lister',
@@ -278,7 +295,7 @@ Route::group(['prefix'=>'directors'], function() {
             'as'=>'user_enregistrer',
             'uses'=>'UserControllers@enregistrer'
         ]);
-    });
+
 });
 
 /*
@@ -292,4 +309,5 @@ Route::group(['prefix'=>'directors'], function() {
 |
 */
 
+});
 

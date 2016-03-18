@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\MoviesRequests;
 use App\Http\Requests\UserRequests;
-use App\Movies;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;

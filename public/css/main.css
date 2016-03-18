@@ -31,3 +31,16 @@ button {
 .btn-block{
     width:50%;
 }
+.col-md-3.user{
+    max-width:120px;
+    height: 159px;
+}
+.user-avatar.users{
+    height: 100px;
+    max-width:100%;
+    text-align: center;
+}
+.row.centrer{
+    margin-left:18px;
+    margin-top:28px;
+}

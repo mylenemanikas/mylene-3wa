@@ -72,7 +72,17 @@
         <tr>
             <td>
                 {!!$movie->id!!}
+                <a href="{{route("movies_panier",[
+                'id'=>$movie->id
+                ])}}">
+                    @if(!array_key_exists($movie->id, session('id_movies',[])))
+                        <i class="fa fa-heart"></i>
+                        @else
+                        <i class="fa fa-heart-o"></i>
+                        @endif
+                </a>
             </td>
+
             <td>
                 <img style="width:40%;" src="{{ $movie->image }}"/>
             </td>
