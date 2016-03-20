@@ -70,7 +70,7 @@
                 {{$director->id}}
             </td>
             <td>
-                <img style="width:40%;" src="{{ $director->image }}"/>
+                <img style="width:50%;" src="{{ $director->image }}"/>
             </td>
             <td>
                 {{$director->firstname}}

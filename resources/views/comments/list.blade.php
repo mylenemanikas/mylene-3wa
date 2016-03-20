@@ -40,7 +40,7 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-2">
             <p>
-                <a href="{{ route('commentaires_creer')}}" class="fa fa-plus">
+                <a href="{{ route('comments_creer')}}" class="fa fa-plus">
 
                     Creer un commentaire
                 </a>
@@ -56,41 +56,24 @@
         <tr class="info">
             <th>Id</th>
             <th>content</th>
-            <th>state</th>
+            <th>date</th>
             <th>Supprimer</th>
         </tr>
         </thead>
 
-        @foreach($actors as $actor)
+        @foreach($comments as $comment)
             <tr>
                 <td>
-                    {!!$actor->id!!}
-                    <a href="{{route("actors_favoris",[
-                'id'=>$actor->id
-                ])}}">
-                        @if(!array_key_exists($actor->id, session('id_actors',[])))
-                            <i class="fa fa-star"></i>
-                        @else
-                            <i class="fa fa-star-o"></i>
-                        @endif
-                    </a>
-                </td>
-
-                <td>
-                    <img style="width:40%;" src="{{ $actor->image }}"/>
+                    {!!$comment->id!!}
                 </td>
                 <td>
-                    {{$actor->firstname}}
+                    {!!str_limit(strip_tags($comment->content),$limit="250",$end="...")!!}
                 </td>
                 <td>
-                    {{$actor->lastname}}
+                    {{$comment->date}}
                 </td>
                 <td>
-                    {!!str_limit(strip_tags($actor->biography),$limit="250",$end="...")!!}
+                    <a href="{{route("comments_supprimer",['id'=>$comment->id]) }}">Supprimer</a>
                 </td>
-                <td>
-                    <a href="{{route("actors_supprimer",['id'=>$actor->id]) }}">Supprimer</a>
-                </td>
-                @endforeach
-
+        @endforeach
     @endsection

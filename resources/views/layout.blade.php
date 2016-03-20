@@ -162,7 +162,7 @@
             <header class="navbar navbar-fixed-top navbar-shadow">
                 <div class="navbar-branding">
                     <a class="navbar-brand" href="dashboard.html">
-                        <b>Mylene</b>Manikas
+                        <b>Allo</b>Movies
                     </a>
                     <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
                 </div>
@@ -284,7 +284,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="dropdown menu-merge">
+                   <li class="dropdown menu-merge">
                         <div class="navbar-btn btn-group">
                             <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">
                                 <span class="ad ad-radio-tower fs14 va-m"></span>
@@ -825,38 +825,38 @@
                         <li>
 
                             <a href="{{ route('movies_lister')}}">
-                                <span class="glyphicon glyphicon-book"></span>
+                                <span class="glyphicon glyphicon-film"></span>
                                 <span class="sidebar-title">Gestion des films</span>
 
                             </a>
                         </li>
                         <li class="active">
                             <a href="{{ route('categories_lister')}}">
-                                <span class="glyphicon glyphicon-home"></span>
+                                <span class="glyphicon glyphicon-book"></span>
                                 <span class="sidebar-title">Gestion des catégories</span>
                             </a>
                         </li>
                         <li class="active">
                             <a href="{{ route('actors_lister')}}">
-                                <span class="glyphicon glyphicon-home"></span>
+                                <span class="glyphicon glyphicon-film"></span>
                                 <span class="sidebar-title">Gestion des acteurs</span>
                             </a>
                         </li>
                         <li class="active">
                             <a href="{{ route('directors_lister')}}">
-                                <span class="glyphicon glyphicon-home"></span>
+                                <span class="glyphicon glyphicon-film"></span>
                                 <span class="sidebar-title">Gestion des réalisateurs</span>
                             </a>
                         </li>
                         <li class="active">
-                            <a href="{{ route('directors_lister')}}">
-                                <span class="glyphicon glyphicon-home"></span>
+                            <a href="{{ route('comments_lister')}}">
+                                <span class="glyphicon glyphicon-list-alt"></span>
                                 <span class="sidebar-title">Gestion des commentaires</span>
                             </a>
                         </li>
                         <li class="active">
                             <a href="{{ route('user_lister')}}">
-                                <span class="glyphicon glyphicon-home"></span>
+                                <span class="glyphicon glyphicon-user"></span>
                                 <span class="sidebar-title">Gestion des utilisateurs</span>
                             </a>
                         </li>
@@ -885,6 +885,13 @@
 
             </section>
         </div>
+
+
+
+
+
+
+
 
         <!-- BEGIN: PAGE SCRIPTS -->
 

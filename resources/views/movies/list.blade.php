@@ -69,7 +69,7 @@
 
 
         @foreach($movies as $movie)
-        <tr>
+        <tr class="widthmovies">
             <td>
                 {!!$movie->id!!}
                 <a href="{{route("movies_panier",[
@@ -84,7 +84,7 @@
             </td>
 
             <td>
-                <img style="width:40%;" src="{{ $movie->image }}"/>
+                <img style="width:80%;" src="{{ $movie->image }}"/>
             </td>
             <td>
                 <h5>
@@ -139,7 +139,7 @@
                     @endif
 
             </td>
-            <td>
+            <td class="description">
                 {!!str_limit(strip_tags($movie->description),$limit="250",$end="...")!!}
             </td>
             <td>

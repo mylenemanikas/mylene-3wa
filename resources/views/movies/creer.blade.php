@@ -30,26 +30,37 @@
 
             <input  id="synopsis" name="synopsis"/>
 
-            <div class="radio-custom radio-disabled mb10">
-                <p>Langue:</p>
-                <label for="languages">fr </label>
-                <input type="radio" id="languages" name="languages" disabled="" checked="">
-                <label for="languages">en </label>
-                <input type="radio" id="languages" name="languages" disabled="" checked="">
-                <label for="languages">es </label>
-                <input type="radio" id="languages" name="languages" disabled="" checked="">
-            </div>
+            <p>
+            </p>
+            Langue:
+            <label class="radio-inline mr10 radio">
 
-            <div class="radio-custom radio-disabled mb10">
-                <p>Bande Originale</p>
-                <label for="bo">vo </label>
-            <input type="radio" name="bo" value="vo">
-                <label for="bo">vost </label>
-            <input type="radio" name="bo" value="vost">
-                <label for="bo">vostfr </label>
-            <input type="radio" name="bo" value="vostfr">
-            </div>
+                <input name="inlineRadioOptions" id="inlineRadio1" value="option1" type="radio">fr
+            </label>
+            <label class="radio-inline mr10 radio">
+                <input name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">en
+            </label>
+            <label class="radio-inline mr10 radio">
+                <input name="inlineRadioOptions" id="inlineRadio3" value="option3" type="radio">es
+            </label>
 
+            <p>
+            </p>
+            Bande Originale:
+            <label class="radio-inline mr10 radio">
+
+                <input name="inlineRadioOptions" id="inlineRadio1" value="option1" type="radio">vo
+            </label>
+            <label class="radio-inline mr10 radio">
+                <input name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">vost
+            </label>
+            <label class="radio-inline mr10 radio">
+                <input name="inlineRadioOptions" id="inlineRadio3" value="option3" type="radio">vostfr
+            </label>
+
+
+            <p>
+            </p>
 
             <label  for="annee">Annee:</label>
 

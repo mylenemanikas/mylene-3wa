@@ -10,7 +10,7 @@
                 </ul>
             </div>
         @endif
-        <form method="post" action="{{route('actors_enregistrer')}}">
+        <form method="post" action="{{route('comments_enregistrer')}}">
             <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
             <label for="firstname">Firstname:</label>
             <input name="firstname" id="firstname"/>

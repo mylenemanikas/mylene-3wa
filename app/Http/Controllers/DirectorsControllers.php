@@ -83,5 +83,10 @@ class DirectorsControllers extends Controller
             return Redirect::route('directors_lister');
 
         }
+    public function supprimer($id){
+        $category = Directors::find($id);
+        $category->delete();//delete(): supprimer
+        return Redirect::route('directors_lister');
+    }
 
 }

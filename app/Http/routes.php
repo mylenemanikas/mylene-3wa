@@ -295,8 +295,53 @@ Route::group(['prefix'=>'directors'], function() {
             'as'=>'user_enregistrer',
             'uses'=>'UserControllers@enregistrer'
         ]);
+        Route::get('/supprimer/{id}',[
+            'as'=>'user_supprimer',
+            'uses'=>'UserControllers@supprimer'
+        ]);
 
-});
+    });
+
+    Route::group(['prefix'=>'comments'], function() {
+
+        Route::get('/lister/', [
+            'as'=>'comments_lister',
+            'uses' => 'CommentsControllers@lister'
+        ]);
+        /*
+         * uses:Permettant d'appeler un Controller
+         * Nom du controler@Action du Controller
+         * action du Controller c'est une méthode du controller
+         * /voir=> bout de l'URI
+         */
+        Route::get('/voir/{id}', [
+            'as'=>'comments_voir',
+            'uses' => 'CommentsControllers@voir'
+        ]);
+        /*
+         * uses:Permettant d'appeler un Controller
+         * Nom du controler@Action du Controller
+         * /voir=> bout de l'URI
+         */
+        Route::get('/creer/', [
+            'as'=>'comments_creer',
+            'uses' => 'CommentsControllers@creer'
+        ]);
+        Route::get('/editer/{id}', [
+            'as'=>'comments_editer',
+            'uses' => 'CommentsControllers@editer'
+        ]);
+        // route en post
+        Route::post('/enregistrer/',[
+            'as'=>'comments_enregistrer',
+            'uses'=>'CommentsControllers@enregistrer'
+        ]);
+        Route::get('/supprimer/{id}',[
+            'as'=>'comments_supprimer',
+            'uses'=>'CommentsControllers@supprimer'
+        ]);
+
+    });
 
 /*
 |--------------------------------------------------------------------------

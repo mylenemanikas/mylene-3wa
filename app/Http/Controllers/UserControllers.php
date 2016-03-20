@@ -23,7 +23,7 @@ class UserControllers extends Controller
             'movie'=>$movie*/
 
         $user=User::all();
-        dump($user);
+        //dump($user);
         //retourner une vue
         return view('user/list',[
         "user"=>$user
@@ -46,9 +46,9 @@ class UserControllers extends Controller
     /**
      * Methode de controller
      * <=> Action de controller
-     */
-    public function creer(){
-        //retourner une vue
+        */
+        public function creer(){
+            //retourner une vue
         return view('user/creer');
     }
     /**
@@ -57,7 +57,7 @@ class UserControllers extends Controller
      */
     public function editer($id){
         /*$movies=Movies::find($id);*/
-        dump($id);
+        //dump($id);
             return view("user/editer",
                 ["id"=>$id
     ]);
@@ -81,5 +81,10 @@ class UserControllers extends Controller
         //redirection a partir de ma route
         return Redirect::route('user_lister');
 
+    }
+    public function supprimer($id){
+        $category = User::find($id);
+        $category->delete();//delete(): supprimer
+        return Redirect::route('user_lister');
     }
 }

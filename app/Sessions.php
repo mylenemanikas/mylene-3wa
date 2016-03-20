@@ -21,6 +21,8 @@ class Sessions extends Model
         $prochainesession=DB::table('sessions')
             ->join('cinema','cinema.id','=','sessions.cinema_id')
             ->select('cinema.title as ctitle','cinema.ville as cville', 'date_session')
+            ->orderBy('title')
+            ->limit(4)
             ->get();
 
         return $prochainesession;
