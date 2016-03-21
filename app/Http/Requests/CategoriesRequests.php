@@ -25,6 +25,7 @@ class CategoriesRequests extends FormRequest
         return [
             'title' => 'required|min:10',
             'description' =>'required|min:10|max:250',
+            'image'=>'image'
             ];
     }
 
@@ -41,6 +42,7 @@ class CategoriesRequests extends FormRequest
             'title.max'=>'le titre est trop long',
             'description.min'=>'la description est trop longue',
             'description.max'=>'la description est trop courte',
+            'image.image'=>'votre photo n\'est pas valide',
         ];
     }
     public function authorize(){

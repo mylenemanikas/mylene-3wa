@@ -57,6 +57,17 @@ class Movies extends Model
         return count($nextseance);
 
     }
+    public function getvideoaleatoire()
+    {
+        $va=DB::table('movies')
+
+            ->select('trailer')
+            ->OrderBy(DB::raw('RAND(id)'))
+            ->take(1)
+            ->first();
+        return $va;
+    }
+
 
 
 

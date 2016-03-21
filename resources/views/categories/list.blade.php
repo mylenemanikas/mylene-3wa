@@ -56,6 +56,7 @@
         <tr class="info">
             <th>Titre</th>
             <th>Description</th>
+            <th>Image</th>
             <th>Supprimer</th>
         </tr>
         </thead>
@@ -67,6 +68,9 @@
                 </td>
                 <td>
                     {{$categorie->description}}
+                </td>
+                <td>
+                    <img style="width:80%;" src="{{ $categorie->image }}"/>
                 </td>
                 <td>
             <a href="{{route("category_supprimer",['id'=>$categorie->id]) }}">Supprimer</a>

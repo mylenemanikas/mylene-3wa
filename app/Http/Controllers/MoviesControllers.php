@@ -20,6 +20,7 @@ class MoviesControllers extends Controller
      */
     public function lister(Request $request)
     {
+
         /*$movie=Movies::find($id);
         return view ('movies/lister',[
             'movie'=>$movie*/
@@ -95,9 +96,20 @@ class MoviesControllers extends Controller
         $bo = $request->bo;
         $annee = $request->annee;
         $date_release = $request->date_release;
+        $file=$request->image;
 
         //2eme étape:creation en base de donnée du nouveau film
         $movies = new Movies();
+
+
+        if($request->hasFile("image")) {
+            $filename = $file->getClientOriginalName(); //Récupère le nom original du fichier
+            $destinationPath = public_path() . "/upload/movies";//Indique ou stocker le fichier
+
+            $file->move($destinationPath, $filename);// Déplace le fichier
+            $movies->image = asset('upload/movies/' . $filename);// ma colonne image qui sera le chemin vers mon fichier
+        }
+
         $movies->title = $title; /* title=comme dans php myadmin*/
         $movies->synopsis = $synopsis;
         $movies->languages = $languages;

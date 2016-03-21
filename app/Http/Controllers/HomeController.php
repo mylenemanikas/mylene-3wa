@@ -7,6 +7,7 @@ use App\Actors;
 use App\Directors;
 use App\User;
 use App\Sessions;
+use App\Comments;
 
 
 
@@ -27,7 +28,8 @@ class HomeController extends Controller
        $nbtotal=$movie->getNbMovies();
        $budget= $movie->getbudget();
        $nextseance=$movie->getnextseance();
-
+       $va=$movie->getvideoaleatoire();
+//dump($va);
        $categorie=new Categories();
 
        $nbtotalc=$categorie->getNbCategories();
@@ -46,9 +48,12 @@ class HomeController extends Controller
 
        $sessions=new Sessions();
        $prochainesession=$sessions->getprochainesession();
+// dump($prochainesession);
+
+       $comments=new Comments();
+       $com=$comments->getcommentaire();
 
 
-      // dump($prochainesession);
 
 
        return view('static/welcome',
@@ -64,7 +69,9 @@ class HomeController extends Controller
                'nbtotalU'=>$nbtotalU,
                'nextseance'=>$nextseance,
                'prochainesession'=>$prochainesession,
-               'lastuser'=>$lastuser
+               'lastuser'=>$lastuser,
+               'va'=>$va,
+               'com'=>$com
        ]);
    }
 

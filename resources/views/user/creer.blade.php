@@ -10,7 +10,7 @@
                 </ul>
             </div>
         @endif
-        <form method="post" action="{{route('user_enregistrer')}}">
+        <form method="post" enctype="multipart/form-data" action="{{route('user_enregistrer')}}">
             <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
             <p>
             <label for="username">Nom de l'utilisateur:</label>
@@ -21,6 +21,9 @@
 
             <label  for="email">Email:</label>
             <input  id="email" name="email"/>
+
+            <label for="avatar">Image:</label>
+            <input type="file" capture="capture" accept="image/*" name="avatar" id="avatar"/>
 
             <button type="submit">Créer un utilisateur</button>
         </form>

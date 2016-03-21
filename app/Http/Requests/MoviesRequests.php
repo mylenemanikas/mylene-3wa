@@ -21,8 +21,8 @@ class MoviesRequests extends FormRequest
         return [
             'title' => 'required|min:3|regex:/^[a-z0-9 ]+$/|unique:movies',
             'synopsis' =>'required|min:10|max:250',
-            'langue'=>'required|in:en,fr,es',
-            'bo'=>'required|in:vo,vost,vostfr',
+            'langue'=>'required'/*|in:en,fr,es*/,
+            'bo'=>'required'/*|in:vo,vost,vostfr*/,
             'annee'=>'required|digits:4',
             'date_release'=>'required|date_format:d/m/Y',
         ];

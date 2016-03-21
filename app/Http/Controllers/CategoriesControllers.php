@@ -71,8 +71,21 @@ class CategoriesControllers extends Controller
         $titre = $request->title; // title est le name de mon champs
         //                       $request->title<=>$_POST['title']
         $description = $request->description; //$_POST['description']
-        //2eme étape:creation en base de donnée du nouveau film
+        $file=$request->image;
+
         $categories = new Categories();
+
+        // Si ma requete contient un fichier de name "image"
+        if($request->hasFile("image")){
+            $filename=$file->getClientOriginalName(); //Récupère le nom original du fichier
+            $destinationPath=public_path()."/upload/categories";//Indique ou stocker le fichier
+
+            $file->move($destinationPath, $filename);// Déplace le fichier
+            $categories->image= asset('upload/categories/'.$filename);// ma colonne image qui sera le chemin vers mon fichier
+
+        }
+
+        //2eme étape:creation en base de donnée du nouveau film
         $categories->title = $titre;
         $categories->description = $description;
         $categories->save();

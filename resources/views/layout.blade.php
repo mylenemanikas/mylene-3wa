@@ -232,8 +232,6 @@
 
                                             </li>
                                             @endforeach
-
-
                                         </ol>
                                     </div>
                                     <li class="dropdown menu-merge">

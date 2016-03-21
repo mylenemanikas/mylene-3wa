@@ -73,7 +73,19 @@ class DirectorsControllers extends Controller
             //                       $request->title<=>$_POST['title']
             $lastname = $request->lastname; //$_POST['description']
             //2eme étape:creation en base de donnée du nouveau film
+            $file=$request->image;
+
             $directors = new Directors();
+
+            if($request->hasFile("image")){
+                $filename=$file->getClientOriginalName(); //Récupère le nom original du fichier
+                $destinationPath=public_path()."/upload/directors";//Indique ou stocker le fichier
+
+                $file->move($destinationPath, $filename);// Déplace le fichier
+                $directors->image= asset('upload/directors/'.$filename);// ma colonne image qui sera le chemin vers mon fichier
+
+            }
+
             $directors->firstname = $firstname;
             $directors->lastname = $lastname;
             $directors->save();

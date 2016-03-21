@@ -104,5 +104,13 @@ class CommentsControllers extends Controller
         return Redirect::route('comments_lister');
 
     }
+    public function actualiserelement(Request $request, $id)
+    {
+        $tab = $request->session()->get('id_comments', []);
+        unset($tab[$id]);
+
+        $request->session()->put('id_comments', $tab);
+        return Redirect::route('static_welcome');
+    }
 
 }

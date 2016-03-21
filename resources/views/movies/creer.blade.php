@@ -15,7 +15,7 @@
                 </ul>
             </div>
         @endif
-        <form method="post" action="{{route('movies_enregistrer')}}">
+        <form method="post" enctype="multipart/form-data" action="{{route('movies_enregistrer')}}">
             <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
 
 
@@ -30,33 +30,32 @@
 
             <input  id="synopsis" name="synopsis"/>
 
-            <p>
-            </p>
-            Langue:
-            <label class="radio-inline mr10 radio">
-
-                <input name="inlineRadioOptions" id="inlineRadio1" value="option1" type="radio">fr
-            </label>
-            <label class="radio-inline mr10 radio">
-                <input name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">en
-            </label>
-            <label class="radio-inline mr10 radio">
-                <input name="inlineRadioOptions" id="inlineRadio3" value="option3" type="radio">es
-            </label>
+            <label for="image">Image:</label>
+            <input type="file" capture="capture" accept="image/*" name="image" id="image"/>
 
             <p>
             </p>
-            Bande Originale:
-            <label class="radio-inline mr10 radio">
 
-                <input name="inlineRadioOptions" id="inlineRadio1" value="option1" type="radio">vo
-            </label>
-            <label class="radio-inline mr10 radio">
-                <input name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">vost
-            </label>
-            <label class="radio-inline mr10 radio">
-                <input name="inlineRadioOptions" id="inlineRadio3" value="option3" type="radio">vostfr
-            </label>
+            <label class="radio-inline mr10 ">Langue: </label>
+
+                <input name="langue" id="inlineRadio1" value="option1" type="radio">en
+
+                <input name="langue" id="inlineRadio2" value="option2" type="radio">fr
+
+                <input name="langue" id="inlineRadio3" value="option3" type="radio">es
+
+
+            <p>
+            </p>
+
+            <label class="radio-inline">Bande Originale:</label>
+
+                <input name="bo" id="inlineRadio4" value="option4" type="radio">vo
+
+                <input name="bo" id="inlineRadio5" value="option5" type="radio">vost
+
+                <input name="bo" id="inlineRadio6" value="option6" type="radio">vostfr
+
 
 
             <p>

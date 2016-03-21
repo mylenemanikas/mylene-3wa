@@ -10,12 +10,19 @@
                 </ul>
             </div>
         @endif
-    <form method="post" action="{{route('categories_enregistrer')}}">
-   <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
+    <form method="post" enctype="multipart/form-data" action="{{route('categories_enregistrer')}}">
+
+        <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
+
         <label for="title">Titre:</label>
         <input name="title" id="title"/>
+
+        <label for="image">Image:</label>
+        <input type="file" capture="capture" accept="image/*" name="image" id="image"/>
+
         <label for="description">Description:</label>
         <textarea id="description" name="description"></textarea>
+
         <button type="submit">Créer cette catégorie</button>
     </form>
 @endsection

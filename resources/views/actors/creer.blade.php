@@ -10,12 +10,17 @@
                 </ul>
             </div>
         @endif
-        <form method="post" action="{{route('actors_enregistrer')}}">
+        <form method="post" enctype="multipart/form-data" action="{{route('actors_enregistrer')}}">
             <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
             <label for="firstname">Firstname:</label>
             <input name="firstname" id="firstname"/>
+
             <label for="lastname">Lastname:</label>
             <textarea id="lastname" name="lastname"></textarea>
+
+            <label for="image">Image:</label>
+            <input type="file" capture="capture" accept="image/*" name="image" id="image"/>
+
             <button type="submit">Créer cet acteur</button>
         </form>
     @endsection
