@@ -50,7 +50,7 @@ class CommentsControllers extends Controller
 
 
         /*find permet de retrouver un objet par son id*/
-        $comment = Comments::find($id);
+        $comments = Comments::find($id);
 
 
         //retourner une vue

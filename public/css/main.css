@@ -1,16 +1,10 @@
 
-.titrepage{
-    font-size: 200%
-}
+
 .radio-custom.radio-disabled.mb10 p{
     font-weight:bold;
 }
-.container{
-    text-align: center;
-}
-.formulaire{
-    margin-left: 5%;
-}
+
+
 button {
     margin-left: 5%;
     margin-top: 0.2%;
@@ -25,11 +19,11 @@ button {
     margin-top: 0.7%;
 
 }
-.btn.btn-rounded.btn-info.btn-block.fa.fa-plus{
-
-}
 .btn-block{
     width:50%;
+}
+.btn.btn-rounded.btn-info.btn-block.boutoncreer{
+    width: 26%;
 }
 .col-md-3.user{
     max-width:120px;
@@ -53,4 +47,13 @@ button {
 }
 .radio{
     font-weight:200 !important;
+}
+.imagecreer{
+    width:15% !important;
+}
+.creer{
+    margin: 2%;
+}
+.formimage{
+    padding-left: 50px;
 }

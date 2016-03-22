@@ -255,7 +255,7 @@
                                 <b>{!!$commentaire->uusername!!}</b> a mis comme commentaire
                                 <a href="#">{!!$commentaire->content !!}</a> pour le film
                                 <b>{!!$commentaire->mtitle!!}</b>.
-                                
+
                             </div>
 
                         </li>
@@ -266,10 +266,6 @@
 
     </div>
 </div>
-
-
-
-
 
 
     <div class="row">

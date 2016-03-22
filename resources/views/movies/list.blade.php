@@ -62,6 +62,7 @@
             <th>Description</th>
             <th>Note</th>
             <th>Supprimer</th>
+            <th>Editer</th>
 
 
         </tr>
@@ -148,7 +149,9 @@
             <td>
                 <a href="{{route("movies_supprimer",['id'=>$movie->id]) }}">Supprimer</a>
             </td>
-
+            <td>
+                <a href="{{route("movies_editer",['id'=>$movie->id]) }}">Editer</a>
+            </td>
         </tr>
         @endforeach
 

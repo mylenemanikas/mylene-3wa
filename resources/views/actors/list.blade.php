@@ -4,7 +4,7 @@
         <div class="topbar-left">
             <ol class="breadcrumb">
                 <li class="crumb-active">
-                    <a href="dashboard.html">Categorie</a>
+                    <a href="dashboard.html">Acteurs</a>
                 </li>
                 <li class="crumb-icon">
                     <a href="dashboard.html">
@@ -14,7 +14,7 @@
                 <li class="crumb-link">
                     <a href="index.html">Home</a>
                 </li>
-                <li class="crumb-trail">Categories</li>
+                <li class="crumb-trail">Acteurs</li>
             </ol>
         </div>
         <div class="topbar-right">
@@ -60,6 +60,7 @@
             <th>Nom</th>
             <th>Biography</th>
             <th>Supprimer</th>
+            <th>Editer</th>
         </tr>
         </thead>
 
@@ -82,10 +83,19 @@
                     <img style="width:40%;" src="{{ $actor->image }}"/>
                 </td>
                 <td>
-                    {{$actor->firstname}}
+                    <a href="{{ route('actors_voir',
+        [
+        "id"=>$actor->id
+        ])}}">  {!!$actor->firstname!!}
+                    </a>
                 </td>
                 <td>
-                    {{$actor->lastname}}
+
+                    <a href="{{ route('actors_voir',
+        [
+        "id"=>$actor->id
+        ])}}">  {!!$actor->lastname!!}
+                    </a>
                 </td>
                 <td>
                     {!!str_limit(strip_tags($actor->biography),$limit="250",$end="...")!!}
@@ -93,6 +103,10 @@
                 <td>
                     <a href="{{route("actors_supprimer",['id'=>$actor->id]) }}">Supprimer</a>
                 </td>
+                <td>
+                    <a href="{{route("actors_editer",['id'=>$actor->id]) }}">Editer</a>
+                </td>
+            </tr>
                 @endforeach
 
     @endsection
