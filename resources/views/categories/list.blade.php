@@ -81,7 +81,7 @@
             <a href="{{route("category_supprimer",['id'=>$categorie->id]) }}">Supprimer</a>
                 </td>
                 <td>
-                    <a href="{{route("category_editer",['id'=>$categorie->id]) }}">Editer</a>
+                    <a href="{{route("categories_editer",['id'=>$categorie->id]) }}">Editer</a>
                 </td>
             </tr>
         @endforeach
