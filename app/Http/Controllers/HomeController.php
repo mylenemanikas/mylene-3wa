@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Movies;
 use App\Categories;
 use App\Actors;
@@ -10,69 +13,121 @@ use App\Sessions;
 use App\Comments;
 
 
-
-/**
- * Class MoviesControllers
- * @package App\Http\Controllers
- * Chaque controller doit être suffixé par le mot clé Controller et doit heriter de  ma classe controller
- */
 class HomeController extends Controller
 {
- /**
-  * Page d'accueil
-  *
-  */
-   public function homepage(){
-       $movie=new Movies();
-       $nb=$movie->getNbMoviesActifs();
-       $nbtotal=$movie->getNbMovies();
-       $budget= $movie->getbudget();
-       $nextseance=$movie->getnextseance();
-       $va=$movie->getvideoaleatoire();
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function modifier(Requests\AdministratorsRequests $request)
+    {
+
+// Récupérer mes données en $request
+        $user=Auth::user();
+        //modifier $user
+        //save()
+        //
+
+        /*return Redirect::route('movies_lister');*/
+        // Créeation de validateur par champs
+        //1ere étape: recuperation des données soumises
+        $firstname = $request->firstname; // title est le name de mon champs
+        $lastname = $request->lastname;
+        $description=$description->description;
+        $email=$email->email;
+        $password=$password->password;
+        //                       $request->title<=>$_POST['title']
+        $file=$request->avatar;
+
+        //2eme étape:creation en base de donnée du nouveau film
+        $user = new User();
+
+
+        if($request->hasFile("image")) {
+            $filename = $file->getClientOriginalName(); //Récupère le nom original du fichier
+            $destinationPath = public_path() . "/upload/movies";//Indique ou stocker le fichier
+
+            $file->move($destinationPath, $filename);// Déplace le fichier
+            $user->avatar = asset('upload/user/' . $filename);// ma colonne image qui sera le chemin vers mon fichier
+        }
+
+        $user->firstname = $firstname; /* title=comme dans php myadmin*/
+        $user->lastname = $lastname;
+        $user->description = $description;
+        $user->email = $email;
+        $user->password = $password;
+
+        $user->save();
+        //save() permet de sauvegarder mon objet en base de données
+// 3eme étape: redirection...
+        //redirection a partir de ma route
+        return Redirect::route('user_modifier');
+
+
+    }
+    public function compte(){
+        return view("compte",
+            [
+            ]);
+
+
+    }
+
+    public function homepage(){
+        $movie=new Movies();
+        $nb=$movie->getNbMoviesActifs();
+        $nbtotal=$movie->getNbMovies();
+        $budget= $movie->getbudget();
+        $nextseance=$movie->getnextseance();
+        $va=$movie->getvideoaleatoire();
 //dump($va);
-       $categorie=new Categories();
+        $categorie=new Categories();
 
-       $nbtotalc=$categorie->getNbCategories();
+        $nbtotalc=$categorie->getNbCategories();
 
-       $actor=new Actors();
-       $nbtotala=$actor->getNbActors();
-       $moyenneage=$actor->getmoyenneAge();
+        $actor=new Actors();
+        $nbtotala=$actor->getNbActors();
+        $moyenneage=$actor->getmoyenneAge();
 
-       $director=new Directors();
-       $nbtotald=$director->getNbDirectors();
+        $director=new Directors();
+        $nbtotald=$director->getNbDirectors();
 
-       $user=new User();
-       $nbU=$user->getNbUserActifs();
-       $nbtotalU=$user->getNbUser();
-       $lastuser=$user->getlastuser();
+        $user=new User();
+        $nbU=$user->getNbUserActifs();
+        $nbtotalU=$user->getNbUser();
+        $lastuser=$user->getlastuser();
 
-       $sessions=new Sessions();
-       $prochainesession=$sessions->getprochainesession();
+        $sessions=new Sessions();
+        $prochainesession=$sessions->getprochainesession();
 // dump($prochainesession);
 
-       $comments=new Comments();
-       $com=$comments->getcommentaire();
+        $comments=new Comments();
+        $com=$comments->getcommentaire();
 
 
 
 
-       return view('static/welcome',
-           [
+        return view('static/welcome',
+            [
                 'nb'=>$nb,
                 'nbtotal'=>$nbtotal,
-               'nbtotalc'=>$nbtotalc,
-               'nbtotala'=>$nbtotala,
-               'nbtotald'=>$nbtotald,
-               'budget'=>$budget,
-               'moyenneage'=>$moyenneage,
-               'nbU'=>$nbU,
-               'nbtotalU'=>$nbtotalU,
-               'nextseance'=>$nextseance,
-               'prochainesession'=>$prochainesession,
-               'lastuser'=>$lastuser,
-               'va'=>$va,
-               'com'=>$com
-       ]);
-   }
-
+                'nbtotalc'=>$nbtotalc,
+                'nbtotala'=>$nbtotala,
+                'nbtotald'=>$nbtotald,
+                'budget'=>$budget,
+                'moyenneage'=>$moyenneage,
+                'nbU'=>$nbU,
+                'nbtotalU'=>$nbtotalU,
+                'nextseance'=>$nextseance,
+                'prochainesession'=>$prochainesession,
+                'lastuser'=>$lastuser,
+                'va'=>$va,
+                'com'=>$com
+            ]);
+    }
 }

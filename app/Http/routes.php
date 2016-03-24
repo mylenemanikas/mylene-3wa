@@ -18,7 +18,14 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'static_welcome',
         'uses' => "HomeController@homepage"
     ]);
-
+    Route::get('/compte',[
+        'as' => 'compte',
+        'uses' => "HomeController@compte"
+    ]);
+    Route::post('/compte',[
+        'as' => 'modifier',
+        'uses' => "HomeController@modifier"
+    ]);
     /*
      * Page Contact
      * /contact=>bout de l'URI
@@ -351,6 +358,7 @@ Route::group(['prefix'=>'directors'], function() {
 
     });
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -364,3 +372,10 @@ Route::group(['prefix'=>'directors'], function() {
 
 });
 
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+
+});
