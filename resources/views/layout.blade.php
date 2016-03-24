@@ -808,6 +808,17 @@
 
                     </header>
                     <!-- End: Sidebar Header -->
+                    <ul class="nav sidebar-menu">
+                        <li class="sidebar-label pt20">Mon compte</li>
+                        <li>
+                            <a href="{{ route('compte')}}">
+                                <span class="fa fa-calendar"></span>
+                                <span class="sidebar-title">compte</span>
+              <span class="sidebar-title-tray">
+                <span class="label label-xs bg-primary"></span>
+              </span>
+                            </a>
+                        </li>
 
                     <!-- Start: Sidebar Menu -->
                     <ul class="nav sidebar-menu">

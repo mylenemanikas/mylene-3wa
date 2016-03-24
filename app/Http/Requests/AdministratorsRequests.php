@@ -8,6 +8,7 @@
 
 namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AdministratorsRequests extends FormRequest
 {
@@ -20,8 +21,8 @@ class AdministratorsRequests extends FormRequest
         return [
             'name' => 'required|max:255',
             'firstname'=> 'required|max:255',
-            'email' => 'required|email|max:255|unique:administrators',
-            'password' => 'required|confirmed|min:6',
+            'email' => 'required|email|max:255|unique:administrators,id,'.Auth::user()->id,
+            'password' => 'confirmed|min:6',
             'description'=>'required|max:2000',
             'photo'=>'required'
         ];

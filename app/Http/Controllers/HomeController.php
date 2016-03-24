@@ -11,6 +11,8 @@ use App\Directors;
 use App\User;
 use App\Sessions;
 use App\Comments;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 
 class HomeController extends Controller
@@ -28,7 +30,7 @@ class HomeController extends Controller
     {
 
 // Récupérer mes données en $request
-        $user=Auth::user();
+
         //modifier $user
         //save()
         //
@@ -37,36 +39,40 @@ class HomeController extends Controller
         // Créeation de validateur par champs
         //1ere étape: recuperation des données soumises
         $firstname = $request->firstname; // title est le name de mon champs
-        $lastname = $request->lastname;
-        $description=$description->description;
-        $email=$email->email;
-        $password=$password->password;
+        $name = $request->name;
+        $description=$request->description;
+        $email=$request->email;
+        $password=$request->password;
         //                       $request->title<=>$_POST['title']
-        $file=$request->avatar;
+        $photo=$request->photo;
 
+        $user=Auth::user();
         //2eme étape:creation en base de donnée du nouveau film
-        $user = new User();
-
-
-        if($request->hasFile("image")) {
-            $filename = $file->getClientOriginalName(); //Récupère le nom original du fichier
-            $destinationPath = public_path() . "/upload/movies";//Indique ou stocker le fichier
-
-            $file->move($destinationPath, $filename);// Déplace le fichier
-            $user->avatar = asset('upload/user/' . $filename);// ma colonne image qui sera le chemin vers mon fichier
-        }
 
         $user->firstname = $firstname; /* title=comme dans php myadmin*/
-        $user->lastname = $lastname;
+        $user->lastname = $name;
         $user->description = $description;
         $user->email = $email;
-        $user->password = $password;
+
+        if($request->hasFile("photo")) {
+            $filename = $photo->getClientOriginalName(); //Récupère le nom original du fichier
+            $destinationPath = public_path() . "/uploads/Administrators";//Indique ou stocker le fichier
+
+            $photo->move($destinationPath, $filename);// Déplace le fichier
+            $user->photo = asset('uploads/administrators/' . $filename);// ma colonne image qui sera le chemin vers mon fichier
+        }
+        //asset: genere une url
+
+        // has() permet de dire si un champs existe et n'est pas vide
+        if($request->has("password")) {
+           $user->password=bcrypt($password);
+        }
 
         $user->save();
         //save() permet de sauvegarder mon objet en base de données
 // 3eme étape: redirection...
         //redirection a partir de ma route
-        return Redirect::route('user_modifier');
+        return Redirect::route('static_welcome');
 
 
     }

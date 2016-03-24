@@ -57,3 +57,7 @@ button {
 .formimage{
     padding-left: 50px;
 }
+/* photo compte*/
+.imagecompte{
+    max-width:25%;
+}

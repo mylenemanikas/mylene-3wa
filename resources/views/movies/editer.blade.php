@@ -23,7 +23,9 @@
 
                                         <p>
                                                 <label for="title">Title:</label>
-                                                <input name="title" id="title" value="{{$movies->title}}" class="form-control" type="text">
+                                                <input name="title" id="title" value="
+
+                                                " class="form-control" type="text">
                                                 {{$errors->first('title')}}
                                         </p>
                                         <!--// permets de mettre l'erreur a coté de la case title-->

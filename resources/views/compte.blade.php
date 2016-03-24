@@ -39,7 +39,8 @@
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Description</label>
                                 <div class="col-md-6">
-                                    <textarea type="text" class="form-control" name="description" value="{{ Auth::user()->description }}"></textarea>
+                                    <textarea type="text" name="description" class="form-control">
+                                    {{ Auth::user()->description }}"</textarea>
 
                                     @if ($errors->has('description'))
                                         <span class="help-block">
@@ -53,8 +54,9 @@
                             <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Image</label>
                                 <div class="col-md-6">
-                                    <img src="{{ Auth::user()->photo }}" />
-                                    <input type="file" capture="capture" accept="image/*" id="photo" name="photo" value=""/>
+                                    <img class="imagecompte" src="{{ Auth::user()->photo }}" />
+
+                                    <input type="file" capture="capture" accept="image/*" name="photo" id="image" />
 
                                     @if ($errors->has('photo'))
                                         <span class="help-block">

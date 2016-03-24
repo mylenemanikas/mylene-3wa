@@ -15,7 +15,7 @@ Route::group(['middleware' => ['web']], function () {
     //
 
     Route::get('/', [
-        'as' => 'static_welcome',
+        'as' => 'static_welcome', // lien vers la page
         'uses' => "HomeController@homepage"
     ]);
     Route::get('/compte',[
