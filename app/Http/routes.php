@@ -26,6 +26,10 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'modifier',
         'uses' => "HomeController@modifier"
     ]);
+    Route::get('/search',[
+        'as' => 'recherche',
+        'uses' => "HomeController@recherche"
+    ]);
     /*
      * Page Contact
      * /contact=>bout de l'URI

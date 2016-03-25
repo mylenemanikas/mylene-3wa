@@ -83,6 +83,9 @@ class HomeController extends Controller
 
 
     }
+    public function recherche(Request $request) {
+        dd($request->all());
+    }
 
     public function homepage(){
         $movie=new Movies();

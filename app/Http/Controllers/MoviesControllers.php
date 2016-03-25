@@ -155,16 +155,14 @@ class MoviesControllers extends Controller
         $date_release = $request->date_release;
         $file=$request->image;
 
-        //2eme étape:creation en base de donnée du nouveau film
-        $movies = new Movies();
 
 
         if($request->hasFile("image")) {
             $filename = $file->getClientOriginalName(); //Récupère le nom original du fichier
-            $destinationPath = public_path() . "/upload/movies";//Indique ou stocker le fichier
+            $destinationPath = public_path() . "/uploads/movies";//Indique ou stocker le fichier
 
             $file->move($destinationPath, $filename);// Déplace le fichier
-            $movies->image = asset('upload/movies/' . $filename);// ma colonne image qui sera le chemin vers mon fichier
+            $movies->image = asset('uploads/movies/' . $filename);// ma colonne image qui sera le chemin vers mon fichier
         }
 
         $movies->title = $title; /* title=comme dans php myadmin*/

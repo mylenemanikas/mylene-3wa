@@ -185,11 +185,15 @@
                         </a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left navbar-search alt" role="search">
+
+
+                <form methode="get" action="{{ route('recherche') }}" class="navbar-form navbar-left navbar-search alt" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." value="Search...">
+                        <input name="" type="search" class="form-control" placeholder="Rechercher..." value="Search...">
                     </div>
                 </form>
+
+
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <div class="navbar-btn btn-group">
