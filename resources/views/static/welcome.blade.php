@@ -140,6 +140,7 @@
 
 
     <!--10 prochaines sessions-->
+    <div class="row">
 
     <div class="col-xs-12 col-sm-6 col-md-6">
     <div class="panel">
@@ -170,6 +171,7 @@
         </div>
     </div>
     </div>
+
 
 
 
@@ -207,8 +209,63 @@
         </ul>
     </div>
     </div>
+    </div>
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+        <span class="panel-icon">
+          <i class="fa fa-clock-o"></i>
+        </span>
+                    <span class="panel-title"> video aléatoire</span>
+                </div>
+                <div class="panel-body ptn pbn p10">
+                    <ol class="timeline-list">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            {!!$va->trailer !!}
+                        </div>
+                    </ol>
+                </div>
+            </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="panel">
+            <div class="panel-heading">
+    <span class="panel-icon">
+      <i class="fa fa-clock-o"></i>
+    </span>
+                <span class="panel-title"> 4 derniers commentaires</span>
+            </div>
+            <div class="panel-body ptn pbn p10">
+                <ol class="timeline-list">
+                    @foreach($com as $commentaire)
+
+                        <li class="timeline-item">
+                            <div class="timeline-icon bg-dark light">
+
+                                <span class="fa fa-tags"></span>
+                            </div>
 
 
+                            <div class="timeline-desc">
+
+                                <b>{!!$commentaire->uusername!!}</b> a mis comme commentaire
+                                <a href="#">{!!$commentaire->content !!}</a> pour le film
+                                <b>{!!$commentaire->mtitle!!}</b>.
+
+                            </div>
+
+                        </li>
+                    @endforeach
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
     <div class="row">

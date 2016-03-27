@@ -50,7 +50,7 @@ class CommentsControllers extends Controller
 
 
         /*find permet de retrouver un objet par son id*/
-        $comment = Comments::find($id);
+        $comments = Comments::find($id);
 
 
         //retourner une vue
@@ -103,6 +103,14 @@ class CommentsControllers extends Controller
         //redirection a partir de ma route
         return Redirect::route('comments_lister');
 
+    }
+    public function actualiserelement(Request $request, $id)
+    {
+        $tab = $request->session()->get('id_comments', []);
+        unset($tab[$id]);
+
+        $request->session()->put('id_comments', $tab);
+        return Redirect::route('static_welcome');
     }
 
 }

@@ -15,10 +15,21 @@ Route::group(['middleware' => ['web']], function () {
     //
 
     Route::get('/', [
-        'as' => 'static_welcome',
+        'as' => 'static_welcome', // lien vers la page
         'uses' => "HomeController@homepage"
     ]);
-
+    Route::get('/compte',[
+        'as' => 'compte',
+        'uses' => "HomeController@compte"
+    ]);
+    Route::post('/compte',[
+        'as' => 'modifier',
+        'uses' => "HomeController@modifier"
+    ]);
+    Route::get('/search',[
+        'as' => 'recherche',
+        'uses' => "HomeController@recherche"
+    ]);
     /*
      * Page Contact
      * /contact=>bout de l'URI
@@ -81,6 +92,12 @@ Route::group(['prefix'=>'movies'], function() {
         'as'=>'movies_editer',
         'uses' => 'MoviesControllers@editer'
     ]);
+
+    Route::post('/modifier/{id}', [
+        'as'=>'movies_modifier',
+        'uses' => 'MoviesControllers@modifier'
+    ]);
+
     // route en post
     Route::post('/enregistrer/',[
         'as'=>'movies_enregistrer',
@@ -105,7 +122,6 @@ Route::group(['prefix'=>'movies'], function() {
     Route::get('/supprimer/{id}',[
         'as'=>'movies_supprimer',
         'uses'=>'MoviesControllers@supprimer'
-
     ]);
 
     // route panier
@@ -150,6 +166,7 @@ Route::group(['prefix'=>'categories'], function() {
         'uses'=>'CategoriesControllers@creer'
     ]);
     Route::get('/editer/',[
+        'as'=>'categories_editer',
         'uses'=>'CategoriesControllers@editer'
     ]);
     // route en post
@@ -190,6 +207,7 @@ Route::group(['prefix'=>'actors'], function() {
         'uses'=>'ActorsControllers@creer'
     ]);
     Route::get('/editer/{id}',[
+        'as'=>'actors_editer',
         'uses'=>'ActorsControllers@editer'
     ]);
     // route en post
@@ -246,6 +264,7 @@ Route::group(['prefix'=>'directors'], function() {
         'uses'=>'DirectorsControllers@creer'
     ]);
     Route::get('/editer/{id}',[
+        'as'=>'directors_editer',
         'uses'=>'DirectorsControllers@editer'
     ]);
     // route en post
@@ -343,6 +362,7 @@ Route::group(['prefix'=>'directors'], function() {
 
     });
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -356,3 +376,10 @@ Route::group(['prefix'=>'directors'], function() {
 
 });
 
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+
+});

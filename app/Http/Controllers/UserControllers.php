@@ -69,10 +69,20 @@ class UserControllers extends Controller
         $username = $request->username; // title est le name de mon champs
         //                       $request->title<=>$_POST['title']
         $email = $request->email; //$_POST['description']
-
+        $file=$request->avatar;
 
         //2eme étape:creation en base de donnée du nouveau film
         $user = new User();
+
+        if($request->hasFile("avatar")){
+            $filename=$file->getClientOriginalName(); //Récupère le nom original du fichier
+            $destinationPath=public_path()."/upload/user";//Indique ou stocker le fichier
+
+            $file->move($destinationPath, $filename);// Déplace le fichier
+            $user->avatar= asset('upload/user/'.$filename);// ma colonne image qui sera le chemin vers mon fichier
+
+        }
+
         $user->username = $username; /* title=comme dans php myadmin*/
         $user->email = $email;
         $user->save();

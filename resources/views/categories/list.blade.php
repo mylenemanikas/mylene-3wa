@@ -56,20 +56,33 @@
         <tr class="info">
             <th>Titre</th>
             <th>Description</th>
+            <th>Image</th>
             <th>Supprimer</th>
+            <th>Editer</th>
         </tr>
         </thead>
 
         @foreach($categories as $categorie)
             <tr>
                 <td>
-                    {{$categorie->title}}
+                    <a href="{{ route('categories_voir',
+        [
+        "id"=>$categorie->id
+        ])}}">  {!!$categorie->title!!}
+                    </a>
                 </td>
                 <td>
                     {{$categorie->description}}
                 </td>
                 <td>
+                    <img class="imagecreer" style="width:80%;" src="{{ $categorie->image }}"/>
+                </td>
+                <td>
             <a href="{{route("category_supprimer",['id'=>$categorie->id]) }}">Supprimer</a>
                 </td>
+                <td>
+                    <a href="{{route("categories_editer",['id'=>$categorie->id]) }}">Editer</a>
+                </td>
+            </tr>
         @endforeach
 @endsection

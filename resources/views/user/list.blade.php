@@ -4,7 +4,7 @@
         <div class="topbar-left">
             <ol class="breadcrumb">
                 <li class="crumb-active">
-                    <a href="dashboard.html">Categorie</a>
+                    <a href="dashboard.html">Utilisateurs</a>
                 </li>
                 <li class="crumb-icon">
                     <a href="dashboard.html">
@@ -14,7 +14,7 @@
                 <li class="crumb-link">
                     <a href="index.html">Home</a>
                 </li>
-                <li class="crumb-trail">Categories</li>
+                <li class="crumb-trail">Utilisateurs</li>
             </ol>
         </div>
         <div class="topbar-right">
@@ -58,6 +58,7 @@
             <th>Avatar</th>
             <th>Username</th>
             <th>Supprimer</th>
+            <th>Editer</th>
         </tr>
         </thead>
 
@@ -82,6 +83,10 @@
                 <td>
                     <a href="{{route("user_supprimer",['id'=>$users->id]) }}">Supprimer</a>
                 </td>
+                <td>
+                    <a href="{{route("user_editer",['id'=>$users->id]) }}">Editer</a>
+                </td>
+            </th>
                 @endforeach
 
                 @endsection

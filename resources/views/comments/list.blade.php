@@ -14,7 +14,7 @@
                 <li class="crumb-link">
                     <a href="index.html">Home</a>
                 </li>
-                <li class="crumb-trail">Commentaire</li>
+                <li class="crumb-trail">Commentaires</li>
             </ol>
         </div>
         <div class="topbar-right">
@@ -58,6 +58,7 @@
             <th>content</th>
             <th>date</th>
             <th>Supprimer</th>
+            <th>Editer</th>
         </tr>
         </thead>
 
@@ -67,7 +68,12 @@
                     {!!$comment->id!!}
                 </td>
                 <td>
-                    {!!str_limit(strip_tags($comment->content),$limit="250",$end="...")!!}
+                    <a href="{{ route('comments_voir',
+        [
+        "id"=>$comment->id
+        ])}}">  {!!str_limit(strip_tags($comment->content),$limit="250",$end="...")!!}
+                    </a>
+
                 </td>
                 <td>
                     {{$comment->date}}
@@ -75,5 +81,9 @@
                 <td>
                     <a href="{{route("comments_supprimer",['id'=>$comment->id]) }}">Supprimer</a>
                 </td>
+                <td>
+                    <a href="{{route("comments_editer",['id'=>$comment->id]) }}">Editer</a>
+                </td>
+            </tr>
         @endforeach
     @endsection

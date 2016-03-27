@@ -20,9 +20,9 @@ class MoviesRequests extends FormRequest
     {
         return [
             'title' => 'required|min:3|regex:/^[a-z0-9 ]+$/|unique:movies',
-            'synopsis' =>'required|min:10|max:250',
-            'langue'=>'required|in:en,fr,es',
-            'bo'=>'required|in:vo,vost,vostfr',
+            'synopsis' =>'required|min:5|max:4000',
+            'langue'=>'required'/*|in:en,fr,es*/,
+            'bo'=>'required'/*|in:vo,vost,vostfr*/,
             'annee'=>'required|digits:4',
             'date_release'=>'required|date_format:d/m/Y',
         ];
@@ -43,8 +43,8 @@ class MoviesRequests extends FormRequest
             'title.min'=>'le titre est trop court',
             'title.regex'=>'Le titre est de mauvais format',
             'title.max'=>'le titre est trop long',
-            'synopsis.min'=>'la description est trop longue',
-            'synopsis.max'=>'la description est trop courte',
+            'synopsis.min'=>'la description est trop courte',
+            'synopsis.max'=>'la description est trop longue',
             'langue.in'=>'la langue est incorrecte(en,es,fr)',
             'bo.required'=> 'La bande son est obligatoire',
             'bo.in'=>'la bo est incorrecte(vo,vost,vostfr)',

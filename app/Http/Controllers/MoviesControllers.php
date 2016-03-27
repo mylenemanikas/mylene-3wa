@@ -20,6 +20,7 @@ class MoviesControllers extends Controller
      */
     public function lister(Request $request)
     {
+
         /*$movie=Movies::find($id);
         return view ('movies/lister',[
             'movie'=>$movie*/
@@ -57,6 +58,7 @@ class MoviesControllers extends Controller
         return view('movies/voir', [
             "movie" => $movie
         ]);
+
     }
 
     /**
@@ -74,14 +76,21 @@ class MoviesControllers extends Controller
      * Methode de controller
      * <=> Action de controller
      */
-    public function editer($id)
+    public function editer(Request $request, $id)
     {
         /*$movies=Movies::find($id);*/
+        $id_movies = $request->session()->get('id_movies');
+        //dump($id_movies);
 
-        dump($id);
+
+        /*find permet de retrouver un objet par son id*/
+        $movies = Movies::find($id);
+        //dump($id);
         return view("movies/editer",
-            ["id" => $id
+            ["movies" => $movies
             ]);
+
+
     }
 
     public function enregistrer(MoviesRequests $request)
@@ -95,9 +104,67 @@ class MoviesControllers extends Controller
         $bo = $request->bo;
         $annee = $request->annee;
         $date_release = $request->date_release;
+        $file=$request->image;
 
         //2eme étape:creation en base de donnée du nouveau film
         $movies = new Movies();
+
+
+        if($request->hasFile("image")) {
+            $filename = $file->getClientOriginalName(); //Récupère le nom original du fichier
+            $destinationPath = public_path() . "/upload/movies";//Indique ou stocker le fichier
+
+            $file->move($destinationPath, $filename);// Déplace le fichier
+            $movies->image = asset('upload/movies/' . $filename);// ma colonne image qui sera le chemin vers mon fichier
+        }
+
+        $movies->title = $title; /* title=comme dans php myadmin*/
+        $movies->synopsis = $synopsis;
+        $movies->languages = $languages;
+        $movies->bo = $bo;
+        $movies->annee = $annee;
+        $movies->date_release = $date_release;
+        $movies->save();
+        //save() permet de sauvegarder mon objet en base de données
+// 3eme étape: redirection...
+        //redirection a partir de ma route
+        return Redirect::route('movies_lister');
+
+    }
+    public function modifier(MoviesRequests $request, $id){
+        /*$movies=Movies::find($id);*/
+        $id_movies = $request->session()->get('id_movies');
+        //dump($id_movies);
+
+
+        /*find permet de retrouver un objet par son id*/
+        $movies = Movies::find($id);
+        //dump($id);
+
+        /*$movies->save();*/
+
+        /*return Redirect::route('movies_lister');*/
+        // Créeation de validateur par champs
+        //1ere étape: recuperation des données soumises
+        $title = $request->title; // title est le name de mon champs
+        //                       $request->title<=>$_POST['title']
+        $synopsis = $request->synopsis; //$_POST['description']
+        $languages = $request->languages;
+        $bo = $request->bo;
+        $annee = $request->annee;
+        $date_release = $request->date_release;
+        $file=$request->image;
+
+
+
+        if($request->hasFile("image")) {
+            $filename = $file->getClientOriginalName(); //Récupère le nom original du fichier
+            $destinationPath = public_path() . "/uploads/movies";//Indique ou stocker le fichier
+
+            $file->move($destinationPath, $filename);// Déplace le fichier
+            $movies->image = asset('uploads/movies/' . $filename);// ma colonne image qui sera le chemin vers mon fichier
+        }
+
         $movies->title = $title; /* title=comme dans php myadmin*/
         $movies->synopsis = $synopsis;
         $movies->languages = $languages;

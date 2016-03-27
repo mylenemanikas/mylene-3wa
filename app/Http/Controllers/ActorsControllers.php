@@ -64,7 +64,18 @@ class ActorsControllers extends Controller
         //                       $request->title<=>$_POST['title']
         $lastname = $request->lastname; //$_POST['description']
         //2eme étape:creation en base de donnée du nouveau film
+        $file=$request->image;
+
         $actors = new Actors();
+
+        if($request->hasFile("image")) {
+            $filename = $file->getClientOriginalName(); //Récupère le nom original du fichier
+            $destinationPath = public_path() . "/upload/actors";//Indique ou stocker le fichier
+
+            $file->move($destinationPath, $filename);// Déplace le fichier
+            $actors->image = asset('upload/actors/' . $filename);// ma colonne image qui sera le chemin vers mon fichier
+        }
+
         $actors->firstname = $firstname;
         $actors->lastname = $lastname;
         $actors->save();

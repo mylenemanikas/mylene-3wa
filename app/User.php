@@ -4,12 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\User;
+
 
 class User extends Model
 {
     protected $table = 'user';
 
+    protected $fillable =[
+        'name','email','password',
+    ];
+
+    protected $hidden =[
+        'password','remember_token'
+    ];
     /**
      * Récupéréer les films actifs
      */
