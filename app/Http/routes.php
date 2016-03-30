@@ -18,15 +18,16 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'static_welcome', // lien vers la page
         'uses' => "HomeController@homepage"
     ]);
-    Route::get('/compte',[
+    Route::get('/compte', [
         'as' => 'compte',
         'uses' => "HomeController@compte"
     ]);
-    Route::post('/compte',[
+    Route::post('/compte', [
         'as' => 'modifier',
         'uses' => "HomeController@modifier"
     ]);
-    Route::get('/search',[
+    // any: get ou post
+    Route::any('/recherche', [
         'as' => 'recherche',
         'uses' => "HomeController@recherche"
     ]);
@@ -36,8 +37,12 @@ Route::group(['middleware' => ['web']], function () {
      */
     /*'/contact'est l'url*/
     Route::get('/contact', [
-        'as' => 'static_contact',
-        'uses' => "StaticControllers@static"
+        'as' => 'contact',
+        'uses' => "StaticControllers@contact"
+    ]);
+    Route::post('/submitemail', [
+        'as' => 'submitemail',
+        'uses' => "HomeController@submitemail"
     ]);
 
     /*
@@ -363,18 +368,8 @@ Route::group(['prefix'=>'directors'], function() {
     });
 
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
-
 });
+
 
 
 Route::group(['middleware' => 'web'], function () {

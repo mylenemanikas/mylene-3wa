@@ -12,6 +12,7 @@ use App\User;
 use App\Sessions;
 use App\Comments;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -28,7 +29,6 @@ class HomeController extends Controller
     }
     public function modifier(Requests\AdministratorsRequests $request)
     {
-
 // Récupérer mes données en $request
 
         //modifier $user
@@ -83,8 +83,39 @@ class HomeController extends Controller
 
 
     }
-    public function recherche(Request $request) {
-        dd($request->all());
+    public function submitemail(Requests\ContactRequest $request){
+
+        $nom=$request->nom;
+        $email=$request->email;
+        $message=$request->message;
+
+        /*dump($nom,$email,$message);
+        exit();*/
+        // envoi de mail
+        Mail::send('emails/contact',[
+            'nom'=>$nom,
+            'email'=>$email,
+            'mess'=>$message,
+            ], function ($message){
+            $message->subject('Un nouveau contact!');
+            $message->from("marie.garcia@gmail.com","Garcia");
+            $message->to('mylene.manikas@gmail.com');
+        });
+        return Redirect::route('static_welcome');
+
+    }
+
+    public function recherche() {
+//        dd($request->all());
+        $movies=new Movies();
+        $result=$movies->rechercheMovies();
+
+       /* dump($result);
+        exit();*/
+
+        return view ('recherche', [
+            'result'=>$result
+        ]);
     }
 
     public function homepage(){
