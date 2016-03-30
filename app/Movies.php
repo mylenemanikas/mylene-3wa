@@ -9,6 +9,8 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+
 
 /**
  * Class Movies
@@ -17,8 +19,45 @@ use Illuminate\Support\Facades\DB;
  */
 class Movies extends Model
 {
+
+
+
     /** Nom de ma table */
     protected $table = 'movies';
+
+    public function rechercheMovies(){
+        $query=Input::get('recherche');
+
+
+        $result = DB::table('movies')
+            ->select(
+                'movies.title as mtitle',
+                'movies.synopsis as msynopsis',
+                'movies.budget',
+                'movies.duree',
+                'movies.note_presse',
+                'categories.title as ctitle'
+            )
+            ->join ('categories','categories.id','=','movies.categories_id')
+            ->join('actors_movies','actors_movies.movies_id', '=', 'movies.id')
+            ->join('actors', 'actors_id', '=', 'actors_movies.actors_id')
+            ->join('directors_movies', 'directors_movies.movies_id','=','movies.id')
+            ->join('directors','directors.id', '=', 'directors_movies.directors_id')
+
+            ->where('movies.title', 'LIKE','%'. $query.'%')
+            ->orwhere('movies.synopsis', 'LIKE', '%'. $query.'%')
+            ->orWhere('movies.description', 'LIKE', '%'. $query. '%')
+            ->orWhere('categories.title', 'LIKE', '%'. $query. '%')
+            ->orWhere('actors.firstname', 'LIKE', '%'. $query. '%')
+            ->orWhere('actors.lastname', 'LIKE', '%'. $query. '%')
+            ->orWhere('directors.lastname', 'LIKE', '%'. $query. '%')
+            ->orWhere('directors.lastname', 'LIKE', '%'. $query. '%')
+
+            ->groupBy('movies.id')
+            ->get();
+
+        return $result;
+    }
 
     /**
      * Récupéréer les films actifs

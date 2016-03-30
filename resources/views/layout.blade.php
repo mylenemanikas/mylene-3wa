@@ -187,9 +187,9 @@
                 </ul>
 
 
-                <form methode="get" action="{{ route('recherche') }}" class="navbar-form navbar-left navbar-search alt" role="search">
+                <form method="get" action="{{ route('recherche') }}" class="navbar-form navbar-left navbar-search alt" role="search">
                     <div class="form-group">
-                        <input name="" type="search" class="form-control" placeholder="Rechercher..." value="Search...">
+                        <input name="recherche" type="search" class="form-control" placeholder="Rechercher..." value="Recherche...">
                     </div>
                 </form>
 
@@ -823,6 +823,16 @@
               </span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('contact')}}">
+                                <span class="fa fa-calendar"></span>
+                                <span class="sidebar-title">contact</span>
+              <span class="sidebar-title-tray">
+                <span class="label label-xs bg-primary"></span>
+              </span>
+                            </a>
+                        </li>
+                        </ul>
 
                     <!-- Start: Sidebar Menu -->
                     <ul class="nav sidebar-menu">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MoviesRequests;
 use App\Movies;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -178,6 +179,7 @@ class MoviesControllers extends Controller
         return Redirect::route('movies_lister');
 
     }
+
 
     public function visible($id)
     {

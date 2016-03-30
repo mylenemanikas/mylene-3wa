@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Static;
-use Illuminate\Support\Facades\Redirect;
 
 /**
  * Class MoviesControllers
@@ -15,6 +13,9 @@ class StaticControllers extends Controller
         //retourner une vue
         return view('static/welcome');
     }
-
+    public function contact(){
+        //retourner une vue
+        return view('static/contact');
+    }
 
 }
