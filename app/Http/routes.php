@@ -14,6 +14,7 @@
 Route::group(['middleware' => ['web']], function () {
     //
 
+
     Route::get('/', [
         'as' => 'static_welcome', // lien vers la page
         'uses' => "HomeController@homepage"
@@ -366,14 +367,11 @@ Route::group(['prefix'=>'directors'], function() {
         ]);
 
     });
-
-
+    Route::auth();
 });
 
-
-
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+
 
     Route::get('/home', 'HomeController@index');
 

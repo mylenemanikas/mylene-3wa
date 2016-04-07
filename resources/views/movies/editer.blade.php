@@ -18,7 +18,7 @@
                                         </div>
                                 @endif
                                 <form method="post" enctype="multipart/form-data" action="{{route('movies_modifier', ['id' => $movies->id])}}">
-                                        <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
+                                        <!--important a mettre pour tout formulaire-->     {!!csrf_field()!!}
 
 
                                         <p>

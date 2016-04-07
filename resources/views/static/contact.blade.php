@@ -4,7 +4,7 @@
         <h1>Page de contact</h1>
     <hr/>
     <form action="{{route('submitemail')}}" method="post">
-        {{csrf_field()}}
+        {!!csrf_field()!!}
     <label for="nom">Nom</label>
     <input  placeholder="votre nom" class="form control" name="nom" id="nom">
         @if($errors->has('nom'))

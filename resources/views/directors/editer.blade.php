@@ -16,7 +16,7 @@
                                                 </ul>
                                         </div>
                                 @endif
-                                <form method="post" enctype="multipart/form-data" action="{{route('directors_enregistrer')}}">
+                                <form method="post" enctype="multipart/form-data" action="{{route('directors_modifier', ['id' => $directors->id])}}">
                                         <!--important a mettre pour tout formulaire-->     {{csrf_field()}}
 
 

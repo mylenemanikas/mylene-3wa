@@ -32,10 +32,9 @@
                 </div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" enctype="multipart/form-data"
-                          method="POST" action="{{ url('/register') }}">
-                        {!! csrf_field() !!}
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data" name="_token" value="{{ csrf_token() }}" method="post" action="{{ url('/register') }}">
 
+                        {!! csrf_field() !!}
 
                         <div class="panel-body p25 bg-light">
                             <div class="section-divider mt10 mb40">
@@ -46,7 +45,7 @@
                             <div class="section row">
                             <div class="col-md-6">
                                 <label for="name" class="field prepend-icon">
-                                <input type="text" class="gui-input" name="name" class="field prepend-icon" placeholder="Nom..." value="{{ old('name') }}">
+                                <input type="text" class="gui-input field prepend-icon" name="name" placeholder="Nom..." value="{{ old('name') }}">
                                 <label for="name" class="field-icon">
                                     <i class="fa fa-user"></i>
                                 </label>

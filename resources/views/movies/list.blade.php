@@ -17,7 +17,7 @@
                 <li class="crumb-trail">Movies</li>
             </ol>
         </div>
-        <div class="topbar-right">
+        <!--<div class="topbar-right">
             <div class="ib topbar-dropdown">
                 <label for="topbar-multiple" class="control-label pr10 fs11 text-muted">Reporting Period</label>
                 <select id="topbar-multiple" class="hidden" style="display: none;">
@@ -32,7 +32,7 @@
                 <a href="#" class="pl5"></a>
 
             </div>
-        </div>
+        </div>-->
     </header>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 titrepage">
